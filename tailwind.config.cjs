@@ -19,8 +19,13 @@ module.exports = {
         500: '100vw'
       },
       height: {
-        80: '68vh'
-      }
+        80: '68vh',
+        110: '110vh'
+      },
+      fontFamily: {
+      'my_font': ['"Open Sans"', "sans-serif"],
+      'my_font_two': ['Rajdhani', "sans-serif"]
+    }
     }
   },
   plugins: [],

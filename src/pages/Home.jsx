@@ -1,6 +1,8 @@
 import React from 'react'
 import 'boxicons'
 import HeroSection from '../components/HeroSection';
+import SecondSection from '../components/SecondSection';
+import OurProducts from '../components/OurProducts';
 
 const Home = () => {
   return (
@@ -39,6 +41,12 @@ const Home = () => {
         </div>
         <div>
             <HeroSection />
+        </div>
+        <div>
+            <SecondSection />
+        </div>
+        <div>
+            <OurProducts />
         </div>
       </div>
     </div>
