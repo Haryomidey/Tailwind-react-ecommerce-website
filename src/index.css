@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn{
+    @apply bg-secondary-200 text-xs border font-bold text-white py-4 px-6 cursor-pointer transition duration-300
+}
