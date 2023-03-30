@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 
-import ImageOne from '../assets/images/testimonial_one.jpg';
 import TestimonialDB from '../Db/TestimonialDB';
 import { useState } from 'react';
 

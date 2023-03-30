@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import HeroSection from '../components/HeroSection';
 import SecondSection from '../components/SecondSection';
@@ -15,10 +15,11 @@ import ImageIconOne from '../assets/images/image_icon_one.png';
 import ImageIconTwo from '../assets/images/image_icon_two.png';
 import ImageIconThree from '../assets/images/image_icon_three.png';
 import ImageIconFour from '../assets/images/image_icon_four.png';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
-    <div>
+    <div className='w-screen'>
       <div>
         <div className = "flex justify-between bg-primary px-20 py-1 border-b min-w-full">
             {/* Location section */}
@@ -135,19 +136,50 @@ const Home = () => {
         </div>
         {/* Latest Blog Ends */}
 
-
+        {/*  */}
         <div className='bg-primary h-60 w-full px-7'>
-            <div className='bg-white h-40 -translate-y-10 custom_shadow py-3 px-4'>
-                <div>
-                    <img src="" alt="" />
+            <div className='bg-white flex  h-40 -translate-y-10 custom_shadow py-3 px-4'>
+                <div className = "flex items-center justify-center px-5 gap-3">
+                    <div className=''>
+                        <img src={ImageIconOne} alt="" className='w-7' />
+                    </div>
+                    <div className='border-r pr-10'>
+                        <h1 className = "font-bold font-rajdhani text-text_black text-lg">Curated Products</h1>
+                        <p className='w-40 text-sm text-gray-600'>Provide Curated Products for all product over $100</p>
+                    </div>
                 </div>
-                <div>
-                    <h1>Curated Products</h1>
-                    <p>Provide Curated Products for all product over $100</p>
+                <div className = "flex items-center justify-center px-5 gap-3">
+                    <div className=''>
+                        <img src={ImageIconTwo} alt="" className='w-7' />
+                    </div>
+                    <div className='border-r pr-10'>
+                        <h1 className = "font-bold font-rajdhani text-text_black text-lg">Handmade</h1>
+                        <p className='w-40 text-sm text-gray-600'>We ensure the product quality that is our main goal</p>
+                    </div>
+                </div>
+                <div className = "flex items-center justify-center px-5 gap-3">
+                    <div className=''>
+                        <img src={ImageIconThree} alt="" className='w-7' />
+                    </div>
+                    <div className='border-r pr-10'>
+                        <h1 className = "font-bold font-rajdhani text-text_black text-lg">Natural Food</h1>
+                        <p className='w-40 text-sm text-gray-600'>Return product within 3 days for any product you buy</p>
+                    </div>
+                </div>
+                <div className = "flex items-center justify-center px-5 gap-3">
+                    <div className=''>
+                        <img src={ImageIconFour} alt="" className='w-7' />
+                    </div>
+                    <div className=''>
+                        <h1 className = "font-bold font-rajdhani text-text_black text-lg">Free home delivery</h1>
+                        <p className='w-40 text-sm text-gray-600'>We ensure the product quality that you can trust easily</p>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
-      </div>
+        {/*  */}
+        <Footer />
     </div>
   )
 }
