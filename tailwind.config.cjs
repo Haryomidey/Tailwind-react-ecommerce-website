@@ -19,12 +19,16 @@ module.exports = {
         500: '100vw'
       },
       height: {
+        70: '400px',
         80: '68vh',
-        110: '110vh'
+        90: '80vh',
+        110: '110vh',
+        250: '250vh',
+        
       },
       fontFamily: {
-      'my_font': ['"Open Sans"', "sans-serif"],
-      'my_font_two': ['Rajdhani', "sans-serif"]
+      open_sans: ['"Open Sans"', "sans-serif"],
+      rajdhani: ['Rajdhani', "sans-serif"]
     }
     }
   },

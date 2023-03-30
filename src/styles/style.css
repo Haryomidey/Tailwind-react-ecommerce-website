@@ -1,3 +1,4 @@
+
 .nav-ul-parent:hover .nav-ul-child{
     display: grid;
     visibility: visible;
@@ -108,4 +109,18 @@ font-variation-settings:
   'wght' 400,
   'GRAD' 0,
   'opsz' 48 
+}
+
+.product_child{
+    visibility: hidden;
+    transition: visibility 0.2s, transform 0.3s;
+}
+
+.product_parent:hover .product_child{
+    visibility: visible;
+    transform: translateY(-1.3rem);
+}
+
+.custom_shadow{
+    box-shadow: 0 0px 20px rgba(4, 4, 4, 0.078);
 }

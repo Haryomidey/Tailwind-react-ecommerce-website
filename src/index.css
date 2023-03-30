@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('./assets/fonts/Rajdhani-Bold.ttf') format('truetype');
+}
+
 .btn{
     @apply bg-secondary-200 text-xs border font-bold text-white py-4 px-6 cursor-pointer transition duration-300
 }

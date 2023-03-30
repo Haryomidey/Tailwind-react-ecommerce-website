@@ -9,9 +9,9 @@ const Navbar = () => {
         <img src = {Logo} alt = "logo" className='w-25'/>
         </div>
         <div>
-            <ul className='flex gap-6 font-bold text-sm text-text_black'>
+            <ul className='flex gap-6 font-bold text-sm text-text_black font-rajdhani'>
                   <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>Home+
-                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child'>
+                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -22,7 +22,7 @@ const Navbar = () => {
                     </ul>
                   </li>
                 <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>About+ 
-                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child'>
+                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -33,7 +33,7 @@ const Navbar = () => {
                     </ul>
                 </li>
                 <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>Shop+ 
-                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child'>
+                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -44,7 +44,7 @@ const Navbar = () => {
                     </ul>
                 </li>
                 <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>News+ 
-                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child'>
+                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -55,7 +55,7 @@ const Navbar = () => {
                     </ul>
                 </li>
                 <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>Pages+ 
-                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child'>
+                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -70,10 +70,10 @@ const Navbar = () => {
         </div>
         <div className='flex items-center gap-3'>
             <div>
-                <button className='hover:bg-secondary-100 btn ease-out'>GET A QUOTE</button>
+                <button className='hover:bg-secondary-100 btn ease-out font-rajdhani text-4xl'>GET A QUOTE</button>
             </div>
             <div>
-                <ul className='flex items-center gap-3'>
+                <ul className='flex items-center gap-3 font-open_sans'>
                     <li className='bg-white text-gray-500 cursor-pointer hover:text-white hover:bg-secondary-200 transition ease duration-300 p-3 flex items-center drop-shadow-2xl'>
                         <span class="material-symbols-outlined">
                             search

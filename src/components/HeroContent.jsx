@@ -31,34 +31,34 @@ const HeroContent = () => {
             </span>
         </div>
         <div className='section_container'>
-            {slide ? <div className='h-full flex'>
+            {slide ? <div className='h-full flex font-open_sans'>
                 <div className='flex-1'>
                     <div className='flex items-center text-sm font-bold text-text_black gap-2'>
                         <img src = {AppleLogo} alt = "apple"/>
-                        <p>100% genuine products</p>
+                        <p className='font-rajdhani'>100% genuine products</p>
                     </div>
-                    <h1 className='font-bold text-5xl pt-3 pb-6'>Tasty & Healthy <br /> Organic Food</h1>
-                    <button className='ease-out mt-4 explore_btn'>EXPLORE PRODUCTS</button>
+                    <h1 className='font-bold text-5xl pt-3 pb-6 font-rajdhani'>Tasty & Healthy <br /> Organic Food</h1>
+                    <button className='ease-out mt-4 explore_btn font-rajdhani'>EXPLORE PRODUCTS</button>
                 </div>
                 <div className='flex-1'>
                     <img src ={ImageOne}/>
                 </div>
               </div>
                 :
-            <div className='h-full flex justify-between'>
+            <div className='h-full flex justify-between font-open_sans'>
                     <div className='flex-1'>
                         <img src ={ImageTwo} className = "w-full" />
                     </div>
                 <div className='flex-1 flex flex-col items-end'>
                     <div className='flex items-center text-sm font-bold text-text_black gap-2'>
                         <img src = {AppleLogo} alt = "apple"/>
-                        <p>100% genuine products</p>
+                        <p className='font-rajdhani'>100% genuine products</p>
                     </div>
-                    <h1 className='font-bold text-5xl pt-3 pb-6 text-right'>Our Garden's Most <br /> Favorite Food</h1>
+                    <h1 className='font-bold text-5xl pt-3 pb-6 text-right font-rajdhani'>Our Garden's Most <br /> Favorite Food</h1>
                     <p className = "text-right text-gray-500  border-r border-black pr-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Ipsam unde vitae repudiandae explicabo!.</p>
                     <div className='flex gap-3'>
-                        <button className='ease-out mt-4 explore_btn'>EXPLORE PRODUCTS</button>
-                        <button className='ease-out mt-4 learn_more_btn shadow'>LEARN MORE</button>
+                        <button className='ease-out mt-4 explore_btn font-rajdhani'>EXPLORE PRODUCTS</button>
+                        <button className='ease-out mt-4 learn_more_btn shadow font-rajdhani'>LEARN MORE</button>
                     </div>
                 </div>
             </div>}
