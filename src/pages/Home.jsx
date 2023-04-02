@@ -1,4 +1,3 @@
-import React from 'react';
 
 import HeroSection from '../components/HeroSection';
 import SecondSection from '../components/SecondSection';
@@ -17,24 +16,29 @@ import ImageIconThree from '../assets/images/image_icon_three.png';
 import ImageIconFour from '../assets/images/image_icon_four.png';
 import Footer from '../components/Footer';
 
-const Home = () => {
+const Home = ({ scrollPosition }) => {
+
+    const handleScrollToTop = () => {
+        window.scrollTo(0, 0);
+    }
+
   return (
     <div className='w-screen'>
       <div>
-        <div className = "flex justify-between bg-primary px-20 py-1 border-b min-w-full">
+        <div className = "flex md:justify-between bg-primary px-2 py-1 border-b min-w-full flex-wrap justify-center sm:px-20">
             {/* Location section */}
             <div className='flex'>
                 <div className='flex items-center gap-1'>
                     <span className="material-symbols-outlined text-secondary-200 text-lg">
                         location_on
                     </span>
-                    <p className='text-xs font-bold text-text_black hover:text-secondary-200 transition duration-300 ease cursor-pointer font-open_sans'>Wesco Estate, Akure Ondo State Nigeria.</p>
+                    <p className='text-xs font-bold text-text_black hover:text-secondary-200 transition duration-300 ease cursor-pointer font-open_sans'>15/A, Nest Tower, NYC</p>
                 </div>
                 <div className='flex items-center gap-1 ml-5'>
                     <span className="material-symbols-outlined text-secondary-200 text-lg">
                         mail
                     </span>
-                    <p className='text-xs font-bold text-text_black hover:text-secondary-200 transition duration-300 ease cursor-pointer font-open_sans'>Oladiipoayomide2021@gmail.com</p>
+                    <p className='text-xs font-bold text-text_black hover:text-secondary-200 transition duration-300 ease cursor-pointer font-open_sans'> info@webmail.com</p>
                 </div>
             </div>
             <div className='flex gap-7 items-center font-open_sans'>
@@ -53,7 +57,7 @@ const Home = () => {
             </div>
         </div>
         <div>
-            <HeroSection />
+            <HeroSection scrollPosition = {scrollPosition} />
         </div>
         <div>
             <SecondSection />
@@ -64,7 +68,7 @@ const Home = () => {
         
         {/* Hot deal section starts */}
         
-        <div className='w-full h-screen flex  bg-primary pr-12 pl-20 py-20'>
+        <div className='w-full h-screen flex bg-primary pr-12 pl-20 py-20'>
             <div className='flex-1/2'>
                 <img src ={HotDealImage} className = "w-full h-full" />
             </div>
@@ -81,10 +85,10 @@ const Home = () => {
                         <div className='w-24 h-24 bg-white rounded-full flex justify-center font-bold text-3xl text-text_black font-rajdhani  items-center'>00</div>
                     </div>
                     <div className='flex gap-20 pl-7 text-lg text-text_black'>
-                        <div className=''>DAYS</div>
-                        <div className=''>HRS</div>
-                        <div className=''>MINS</div>
-                        <div className=''>SECS</div>
+                        <div>DAYS</div>
+                        <div>HRS</div>
+                        <div>MINS</div>
+                        <div>SECS</div>
                     </div>
                     <button className='btn mt-10 ml-5'>SHOP NOW</button>
                 </div>
@@ -107,7 +111,7 @@ const Home = () => {
             <div style={{backgroundImage: `url(${BgImageOne})`}} className='w-4/5 absolute h-full bg-cover bg-center bg-no-repeat -bottom-40 flex justify-center items-center'>
                 <div className='w-28 h-28 border-4 border-white flex justify-center items-center p-3 hover:border-secondary-200 transition duration-300 ease cursor-pointer'>
                     <div className='w-full h-full bg-white flex items-center justify-center'>
-                        <span class="material-symbols-outlined text-4xl text-secondary-200 icon-filled">
+                        <span className="material-symbols-outlined text-4xl text-secondary-200 icon-filled">
                             play_arrow
                         </span>                                     
                     </div>
@@ -140,7 +144,7 @@ const Home = () => {
         <div className='bg-primary h-60 w-full px-7'>
             <div className='bg-white flex  h-40 -translate-y-10 custom_shadow py-3 px-4'>
                 <div className = "flex items-center justify-center px-5 gap-3">
-                    <div className=''>
+                    <div>
                         <img src={ImageIconOne} alt="" className='w-7' />
                     </div>
                     <div className='border-r pr-10'>
@@ -149,7 +153,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className = "flex items-center justify-center px-5 gap-3">
-                    <div className=''>
+                    <div>
                         <img src={ImageIconTwo} alt="" className='w-7' />
                     </div>
                     <div className='border-r pr-10'>
@@ -158,7 +162,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className = "flex items-center justify-center px-5 gap-3">
-                    <div className=''>
+                    <div>
                         <img src={ImageIconThree} alt="" className='w-7' />
                     </div>
                     <div className='border-r pr-10'>
@@ -170,7 +174,7 @@ const Home = () => {
                     <div className=''>
                         <img src={ImageIconFour} alt="" className='w-7' />
                     </div>
-                    <div className=''>
+                    <div>
                         <h1 className = "font-bold font-rajdhani text-text_black text-lg">Free home delivery</h1>
                         <p className='w-40 text-sm text-gray-600'>We ensure the product quality that you can trust easily</p>
                     </div>
@@ -180,6 +184,15 @@ const Home = () => {
         </div>
         {/*  */}
         <Footer />
+        
+        
+        {/*  */}
+        
+        <div className={scrollPosition > 0 ? 'bg-primary w-11 h-11 flex items-center justify-center transform rotate-45 fixed bottom-16 right-10 shadow z-50 cursor-pointer': 'bg-primary w-11 h-11 flex items-center justify-center transform rotate-45 fixed bottom-16 right-10 shadow z-50 cursor-pointer hidden'} onClick ={handleScrollToTop} >
+            <span className="material-symbols-outlined transform -rotate-45 text-black icon-filled">
+              expand_less
+            </span>
+        </div>
     </div>
   )
 }

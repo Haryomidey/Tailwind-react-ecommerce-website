@@ -8,7 +8,7 @@ const ProductCard = ({ProductDB}) => {
   return (
     <>
         {ProductDB.map(product => (
-            <div className='w-64 h-96 bg-white border hover:shadow-xl relative'>
+            <div className='w-64 h-96 bg-white border hover:shadow-xl relative' key={product.id}>
                 <div className='absolute top-3 right-3 bg-secondary-200 px-3 py-1 text-xs font-bold text-white border rounded-tl-xl rounded-br-xl'>{product.badge}</div>
                 <div>
                     <img src ={product.productImage} />

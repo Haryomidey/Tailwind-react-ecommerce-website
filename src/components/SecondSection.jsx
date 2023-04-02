@@ -11,10 +11,10 @@ const SecondSection = () => {
       </div>
       <div className='flex-1 flex flex-col gap-8'>
         <div className='flex-1 overflow-hidden'>
-            <img src = {ImageTwo} className = "hover:scale-110 transition duration-1000 ease-linear cursor-pointer" />
+            <img src = {ImageTwo} className = "hover:scale-110 transition duration-1000 ease-linear cursor-pointer"/>
         </div>
         <div className='flex-1 overflow-hidden'>
-            <img src = {ImageThree} className = "hover:scale-110 transition duration-1000 ease-linear cursor-pointer" />
+            <img src = {ImageThree} className = "hover:scale-110 transition duration-1000 ease-linear cursor-pointer"/>
         </div>
       </div>
     </div>

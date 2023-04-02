@@ -28,7 +28,7 @@ export default () => {
       onSwiper={(swiper) => console.log(swiper)}
     >
       {TestimonialDB.map(testimonial => (
-        <SwiperSlide className='pt-10'>
+        <SwiperSlide className='pt-10' key={testimonial.id}>
         <div onMouseDown={handleMouseDown} onMouseUp = {handleMouseUp} className={!isMouseDown ? 'flex cursor-grab select-none min-w-96 h-56 bg-white shadow' : 'flex cursor-grabbing select-none min-w-96 h-56 bg-white shadow'}>
             <div className='w-2/5  h-full px-8 pt-8 pb-12 pr-12'>
                 <img src= {testimonial.image} alt="" className='w-full h-full bg-cover' />

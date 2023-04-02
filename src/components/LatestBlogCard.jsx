@@ -20,7 +20,7 @@ export default () => {
       
         {
             LatestBlogDb.map(blog => (
-                <SwiperSlide>
+                <SwiperSlide key={blog.id}>
                     <div className='latest_blog_card'>
                         <div className=' custom-shadow user-none latest_blog_card_child'>
                             <div className='h-1/2 w-full overflow-hidden'>

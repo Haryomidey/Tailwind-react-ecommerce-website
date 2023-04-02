@@ -29,7 +29,10 @@ module.exports = {
       fontFamily: {
       open_sans: ['"Open Sans"', "sans-serif"],
       rajdhani: ['Rajdhani', "sans-serif"]
-    }
+      },
+      screens: {
+        md_small: '1045px'
+      }
     }
   },
   plugins: [],

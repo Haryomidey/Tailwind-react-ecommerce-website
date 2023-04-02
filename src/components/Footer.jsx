@@ -4,7 +4,7 @@ import PaypalImage from '../assets/images/paypal_image.png';
 
 const Footer = () => {
   return (
-    <div className='bg-primary m-h-90 w-screen pb-24 flex gap-12 flex-wrap px-7'>
+    <div className='bg-primary m-h-90 w-screen flex gap-12 justify-center flex-wrap'>
       {/*  */}
 
       <div className='w-60'>
@@ -30,6 +30,12 @@ const Footer = () => {
               <p className='hover:text-secondary-200 cursor-pointer transition duration-300 ease'>oladiipoayomide2021@gmail.com</p>
             </li>
           </ul>
+          <div className='mt-5 flex gap-6'>
+            <i className="fa-brands fa-facebook-f hover:text-secondary-200 transition duration-300 ease cursor-pointer"></i>
+            <i className="fa-brands fa-twitter hover:text-secondary-200 transition duration-300 ease cursor-pointer"></i>
+            <i className="fa-brands fa-linkedin hover:text-secondary-200 transition duration-300 ease cursor-pointer"></i>
+            <i className="fa-brands fa-youtube hover:text-secondary-200 transition duration-300 ease cursor-pointer"></i>
+          </div>
         </div>
       </div>
 
@@ -41,12 +47,12 @@ const Footer = () => {
         <h1 className='font-bold pb-4 font-rajdhani text-xl text-text
         '>Company</h1>
         <ul className='flex flex-col gap-4'>
-          <li className='hover_li'>About</li>
-          <li>Blog</li>
-          <li>All Products</li>
-          <li>Locations Map</li>
-          <li>FAQ</li>
-          <li>Contact us</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>About</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Blog</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>All Products</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Locations Map</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>FAQ</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Contact us</li>
         </ul>
       </div>
 
@@ -58,12 +64,12 @@ const Footer = () => {
         <h1 className='font-bold pb-4 font-rajdhani text-xl text-text
         '>Servces.</h1>
         <ul className='flex flex-col gap-4'>
-          <li>Order tracking</li>
-          <li>Wish List</li>
-          <li>Login</li>
-          <li>My account</li>
-          <li>Terms & Conditions</li>
-          <li>Promotional Offers</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Order tracking</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Wish List</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Login</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>My account</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Terms & Conditions</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Promotional Offers</li>
         </ul>
       </div>
 
@@ -75,12 +81,12 @@ const Footer = () => {
         <h1 className='font-bold pb-4 font-rajdhani text-xl text-text
         '>Customer Care</h1>
         <ul className='flex flex-col gap-4'>
-          <li>Login</li>
-          <li>My account</li>
-          <li>Wish List</li>
-          <li>Order tracking</li>
-          <li>FAQ</li>
-          <li>Contact us</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Login</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>My account</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Wish List</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Order tracking</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>FAQ</li>
+          <li className='hover_li flex gap-2'><span className='footer_span'>//</span>Contact us</li>
         </ul>
       </div>
 
@@ -104,8 +110,15 @@ const Footer = () => {
           '>We Accept</p>
         <img src={PaypalImage} alt="" />
       </div>
-
       {/*  */}
+      <footer className='w-full h-20 bg-text_black flex items-center justify-between pl-7 pr-11 text-white'>
+        <p className='font-open_sans text-sm'>All Rights Reserved @ Ayotech 2023</p>
+        <ul className='flex gap-4 font-rajdhani text-xs'>
+          <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Terms & conditions</li>
+          <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Claim</li>
+          <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Privacy & Policy</li>
+        </ul>
+      </footer>
     </div>
   )
 }

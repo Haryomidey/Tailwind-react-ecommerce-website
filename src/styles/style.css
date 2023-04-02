@@ -1,3 +1,6 @@
+*{
+    scroll-behavior: smooth;
+}
 
 .nav-ul-parent:hover .nav-ul-child{
     display: grid;
@@ -140,19 +143,37 @@ font-variation-settings:
     position: relative;
     transition: color 0.3s ease;
     cursor: pointer;
+    margin-left: -17px;
 }
 
 .hover_li:hover{
     color: #80B500;
 }
 
-.hover_li::before{
-    content: '//';
-    margin-right: 12px;
+.footer_span{
     font-size: 14px;
-    display: none;
+    visibility: hidden;
+    color: #80B500;
+    transition: margin-left 0.3s ease, visibility 0.1s ease;
 }
 
-.hover_li:hover .hover_li::before{
-    display: block !important;
+.hover_li:hover .footer_span{
+    visibility: visible;
+    margin-left: 17px;
+}
+
+.secondary_nav{
+    background: #00000085;
+    position: fixed;
+    width: 100%;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 1111;
+}
+
+.custom_scrollbar{
+    
 }

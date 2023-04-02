@@ -23,7 +23,7 @@ const HeroContent = () => {
   return (
     <div className=' h-80 pt-7 px-20 hero_content_container relative'>
         <div className = "absolute w-screen top-32 left-0 flex justify-between px-5">
-            <span className="material-symbols-outlined p-4 cursor-pointer border -ml-2" onClick={handleToggleSlide}>
+            <span className="material-symbols-outlined p-4 cursor-pointer z-1 border -ml-2" onClick={handleToggleSlide}>
                 west
             </span>
             <span className="material-symbols-outlined p-4 cursor-pointer border" onClick={handleToggleSlide}>
