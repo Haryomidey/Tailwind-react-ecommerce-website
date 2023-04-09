@@ -11,22 +11,20 @@ export default () => {
   return (
     
     <Swiper
-      spaceBetween={0}
-      slidesPerView={3}
-      loop = {true}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
+        slidesPerView={'auto'}
+        loop = {true}
+        grabCursor={true}
     >
       
         {
             LatestBlogDb.map(blog => (
-                <SwiperSlide key={blog.id}>
+                <SwiperSlide key={blog.id} className =''>
                     <div className='latest_blog_card'>
                         <div className=' custom-shadow user-none latest_blog_card_child'>
                             <div className='h-1/2 w-full overflow-hidden'>
                                 <img src={blog.image} alt="" className='w-full h-full hover:scale-110 transition ease duration-500'/>
                             </div>
-                            <div className='px-5'>
+                            <div className='px-5 2/3'>
                                 <div className='flex py-6 gap-8'>
                                     <div className='flex items-center hover:text-secondary-200 cursor-pointer transition ease duration-300'>
                                         <span class="material-symbols-outlined text-secondary-200 text-lg pr-1">

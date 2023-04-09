@@ -68,29 +68,29 @@ const Home = ({ scrollPosition }) => {
         
         {/* Hot deal section starts */}
         
-        <div className='w-full h-screen flex bg-primary pr-12 pl-20 py-20'>
+        <div className='w-full min-h-screen flex flex-wrap bg-primary pr-12 sm:pl-20 py-20 pl-3'>
             <div className='flex-1/2'>
                 <img src ={HotDealImage} className = "w-full h-full" />
             </div>
             <div className='flex-1/2'>
                 <h2 className='text-sm font-bold text-secondary-200'>Todays Hot Deals</h2>
-                <h1 className='font-bold font-rajdhani mt-5 text-5xl text-text_black'>
+                <h1 className='font-bold font-rajdhani mt-5 sm:text-5xl text-3xl text-text_black'>
                     Original Stock Honey <br /> Combo Package
                 </h1>
                 <div>
                     <div className='flex gap-4 mt-12 mb-4'>
-                        <div className='w-24 h-24 bg-white rounded-full flex justify-center font-bold text-3xl text-text_black font-rajdhani  items-center'>00</div>
-                        <div className='w-24 h-24 bg-white rounded-full flex justify-center font-bold text-3xl text-text_black font-rajdhani  items-center'>00</div>
-                        <div className='w-24 h-24 bg-white rounded-full flex justify-center font-bold text-3xl text-text_black font-rajdhani  items-center'>00</div>
-                        <div className='w-24 h-24 bg-white rounded-full flex justify-center font-bold text-3xl text-text_black font-rajdhani  items-center'>00</div>
+                        <div className='sm:w-24 sm:h-24 w-12 h-12 bg-white rounded-full flex justify-center font-bold text-xl sm:text-3xl text-text_black font-rajdhani  items-center'>00</div>
+                        <div className='sm:w-24 sm:h-24 w-12 h-12 bg-white rounded-full flex justify-center font-bold text-xl sm:text-3xl text-text_black font-rajdhani  items-center'>00</div>
+                        <div className='sm:w-24 sm:h-24 w-12 h-12 bg-white rounded-full flex justify-center font-bold text-xl sm:text-3xl text-text_black font-rajdhani  items-center'>00</div>
+                        <div className='sm:w-24 sm:h-24 w-12 h-12 bg-white rounded-full flex justify-center font-bold text-xl sm:text-3xl text-text_black font-rajdhani  items-center'>00</div>
                     </div>
-                    <div className='flex gap-20 pl-7 text-lg text-text_black'>
+                    <div className='flex gap-10 sm:gap-20 sm:pl-7 sm:text-lg text-text_black'>
                         <div>DAYS</div>
                         <div>HRS</div>
                         <div>MINS</div>
                         <div>SECS</div>
                     </div>
-                    <button className='btn mt-10 ml-5'>SHOP NOW</button>
+                    <button className='explore_btn px-4 md:px-6 lg:px-9 py-3 md:py-4  text-xs md:text-sm font-bold mt-10 ml-5'>SHOP NOW</button>
                 </div>
             </div>
         </div>
@@ -100,14 +100,14 @@ const Home = ({ scrollPosition }) => {
         
         {/* Featured product starts */}
         <div className='w-full min-h-110 px-10 pt-20'>
-            <h1 className='font-rajdhani text-5xl text-text_black text-center'>Featured Products</h1>
+            <h1 className='font-rajdhani sm:text-5xl text-3xl text-text_black text-center'>Featured Products</h1>
             <div className='flex flex-wrap justify-center gap-10 mt-10'><ProductCard ProductDB = {ProductDB} /></div>
         </div>
         {/* Featured product ends */}
         
         {/* Video Section Starts */}
         
-        <div className='w-full h-90 px-24 -mt-12 relative'>
+        <div className='w-full sm:h-90 h-64 sm:px-24 px-8 -mt-12 relative flex items-center justify-center'>
             <div style={{backgroundImage: `url(${BgImageOne})`}} className='w-4/5 absolute h-full bg-cover bg-center bg-no-repeat -bottom-40 flex justify-center items-center'>
                 <div className='w-28 h-28 border-4 border-white flex justify-center items-center p-3 hover:border-secondary-200 transition duration-300 ease cursor-pointer'>
                     <div className='w-full h-full bg-white flex items-center justify-center'>
@@ -122,17 +122,26 @@ const Home = ({ scrollPosition }) => {
         {/* Testimonial section starts */}
         <div className='bg-primary w-full -pt-20 pb-20 min-h-screen'>
             <h1 className='pt-64 text-center font-rajdhani text-secondary-200 '>// TESTIMONIAL</h1>
-            <div className='flex justify-center'>
-                <h1 className='text-center text-text_black pt-5 text-5xl font-rajdhani'>Clients Feedbacks</h1>
-                <span className='text-5xl pt-5 text-secondary-200 font-rajdhani'>.</span>
+            <div className='flex justify-center items-baseline'>
+                <h1 className='text-center text-text_black pt-5 sm:text-5xl text-3xl font-rajdhani'>Clients Feedbacks</h1>
+                <span className='text-5xl text-secondary-200 font-rajdhani'>.</span>
             </div>
-            <Testimonial />
+            <div className='pt-10'>
+                <Testimonial />
+                {/* <div className='mt-8 w-full flex justify-center gap-5'>
+                    <div className='w-[10px] h-[10px] bg-secondary-200 rounded-full cursor-pointer'></div>
+                    <div className='w-[10px] h-[10px] bg-secondary-200 rounded-full cursor-pointer'></div>
+                    <div className='w-[10px] h-[10px] bg-secondary-200 rounded-full cursor-pointer'></div>
+                    <div className='w-[10px] h-[10px] bg-secondary-200 rounded-full cursor-pointer'></div>
+                    <div className='w-[10px] h-[10px] bg-secondary-200 rounded-full cursor-pointer'></div>
+                </div> */}
+            </div>
         </div>
         {/* Testimonial section ends */}
 
         {/* Latest Blog Starts */}
 
-        <div className = "w-full min-h-110 bg-white px-12 pt-20 pb-32">
+        <div className = "w-full min-h-110 bg-white pt-20 pb-32">
             <h1 className = "text-center font-bold text-5xl font-rajdhani text-text_black">Latest Blog</h1>
             <div className='pt-8 user-none'>
                 <LatestBlogCard />
@@ -141,42 +150,42 @@ const Home = ({ scrollPosition }) => {
         {/* Latest Blog Ends */}
 
         {/*  */}
-        <div className='bg-primary h-60 w-full px-7'>
-            <div className='bg-white flex  h-40 -translate-y-10 custom_shadow py-3 px-4'>
-                <div className = "flex items-center justify-center px-5 gap-3">
+        <div className='bg-primary min-h-60 w-full px-7'>
+            <div className='bg-white flex flex-wrap min-h-40 -translate-y-10 custom_shadow py-8 py-3 px-4'>
+                <div className = "flex items-center px-5 gap-3 w-full lg_small:w-1/2 lg:w-1/4 lg_small:border-r">
                     <div>
-                        <img src={ImageIconOne} alt="" className='w-7' />
+                        <img src={ImageIconOne} alt="" className='w-16 lg_small:w-8' />
                     </div>
-                    <div className='border-r pr-10'>
+                    <div className=' pr-10'>
                         <h1 className = "font-bold font-rajdhani text-text_black text-lg">Curated Products</h1>
-                        <p className='w-40 text-sm text-gray-600'>Provide Curated Products for all product over $100</p>
+                        <p className='text-sm text-gray-600'>Provide Curated Products for all product over $100</p>
                     </div>
                 </div>
-                <div className = "flex items-center justify-center px-5 gap-3">
+                <div className = "flex items-center px-5 gap-3 w-full lg_small:w-1/2 lg:w-1/4 mt-16 lg_small:mt-0 lg:border-r">
                     <div>
-                        <img src={ImageIconTwo} alt="" className='w-7' />
+                        <img src={ImageIconTwo} alt="" className='w-16 lg_small:w-8' />
                     </div>
-                    <div className='border-r pr-10'>
+                    <div className=' pr-10'>
                         <h1 className = "font-bold font-rajdhani text-text_black text-lg">Handmade</h1>
-                        <p className='w-40 text-sm text-gray-600'>We ensure the product quality that is our main goal</p>
+                        <p className='text-sm text-gray-600'>We ensure the product quality that is our main goal</p>
                     </div>
                 </div>
-                <div className = "flex items-center justify-center px-5 gap-3">
+                <div className = "flex items-center px-5 gap-3 w-full lg_small:w-1/2 lg:w-1/4 mt-16 lg_small:mt-6 lg:mt-0 lg_small:border-r">
                     <div>
-                        <img src={ImageIconThree} alt="" className='w-7' />
+                        <img src={ImageIconThree} alt="" className='w-16 lg_small:w-8' />
                     </div>
-                    <div className='border-r pr-10'>
+                    <div className=' pr-10'>
                         <h1 className = "font-bold font-rajdhani text-text_black text-lg">Natural Food</h1>
-                        <p className='w-40 text-sm text-gray-600'>Return product within 3 days for any product you buy</p>
+                        <p className='text-sm text-gray-600'>Return product within 3 days for any product you buy</p>
                     </div>
                 </div>
-                <div className = "flex items-center justify-center px-5 gap-3">
+                <div className = "flex items-center  px-5 gap-3 w-full lg_small:w-1/2 lg:w-1/4 mt-16 lg_small:mt-6 lg:mt-0">
                     <div className=''>
-                        <img src={ImageIconFour} alt="" className='w-7' />
+                        <img src={ImageIconFour} alt="" className='w-16 lg_small:w-8' />
                     </div>
                     <div>
                         <h1 className = "font-bold font-rajdhani text-text_black text-lg">Free home delivery</h1>
-                        <p className='w-40 text-sm text-gray-600'>We ensure the product quality that you can trust easily</p>
+                        <p className='text-sm text-gray-600'>We ensure the product quality that you can trust easily</p>
                     </div>
                 </div>
                 </div>
@@ -188,7 +197,7 @@ const Home = ({ scrollPosition }) => {
         
         {/*  */}
         
-        <div className={scrollPosition > 0 ? 'bg-primary w-11 h-11 flex items-center justify-center transform rotate-45 fixed bottom-16 right-10 shadow z-50 cursor-pointer': 'bg-primary w-11 h-11 flex items-center justify-center transform rotate-45 fixed bottom-16 right-10 shadow z-50 cursor-pointer hidden'} onClick ={handleScrollToTop} >
+        <div className={`bg-primary w-11 h-11 items-center justify-center transform rotate-45 fixed bottom-16 right-10 shadow z-50 cursor-pointer ${scrollPosition > 0 ?  'flex' : 'hidden'}`} onClick ={handleScrollToTop} >
             <span className="material-symbols-outlined transform -rotate-45 text-black icon-filled">
               expand_less
             </span>

@@ -1,52 +1,59 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-
 import TestimonialDB from '../Db/TestimonialDB';
 import { useState } from 'react';
 
-export default () => {
+import SwiperCore, { Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
 
-    const [isMouseDown, setIsMouseDown] = useState(false);
+SwiperCore.use([Pagination]);
 
+const Testimonial = () => {
+
+  const [isMouseDown, setIsMouseDown] = useState(false);
      const handleMouseDown = () => {
-        setIsMouseDown(true);
+      setIsMouseDown(true);
     };
 
     const handleMouseUp = () => {
-        setIsMouseDown(false);
-    };
+      setIsMouseDown(false);
+  };
+  
+
 
   return (
-    <Swiper
-      spaceBetween={50}
-      slidesPerView={2.2}
-      loop = {true}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      {TestimonialDB.map(testimonial => (
-        <SwiperSlide className='pt-10' key={testimonial.id}>
-        <div onMouseDown={handleMouseDown} onMouseUp = {handleMouseUp} className={!isMouseDown ? 'flex cursor-grab select-none min-w-96 h-56 bg-white shadow' : 'flex cursor-grabbing select-none min-w-96 h-56 bg-white shadow'}>
-            <div className='w-2/5  h-full px-8 pt-8 pb-12 pr-12'>
-                <img src= {testimonial.image} alt="" className='w-full h-full bg-cover' />
-            </div>
-            <div className='w-3/5'>
-                      <p className='w-72 pt-8'>{testimonial.content}</p>
-                <div className='flex items-center justify-between pr-4'>
-                    <div className='font-rajdhani'>
-                        <h1 className='text-text_black text-lg'>{testimonial.name}</h1>
-                        <p className='text-secondary-200'>{testimonial.role}</p>
-                    </div>
-                    <div><i className="fa-regular fa-comments text-gray-100 text-8xl -mt-2"></i></div>
+    <div className={`${isMouseDown ? 'cursor-grabbing' : 'cursor-grab'} select-none flex justify-center gap-10`} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+      
+      <Swiper
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        loop = {true}
+        className="mySwiper"
+      >
+
+        {TestimonialDB.map(testimonial => (
+          <div key={testimonial.id}>
+            <SwiperSlide className='bg-white shadow lg_small:flex'>
+              <div className='w-full lg_small:w-2/4 px-8 lg_small:px-0 lg_small:pl-5 pt-8 pb-2'>
+                <img src= {testimonial.image} alt="" className='w-2/4 lg_small:w-full h-full lg_small:h-[150px] bg-cover' />
+              </div>
+              <div className='w-full px-8 lg_small:px-3'>
+                <p className='w-full pt-8'>{testimonial.content}</p>
+              <div className='flex items-center justify-between pr-4 pb-4 pt-2 md:pt-6'>
+                <div className='font-rajdhani'>
+                  <h1 className='text-text_black text-lg'>{testimonial.name}</h1>
+                  <p className='text-secondary-200'>{testimonial.role}</p>
                 </div>
+                <div><i className="fa-regular fa-comments text-gray-100 text-5xl -mt-2 md:text-7xl"></i></div>
+              </div>
             </div>
-        </div>
-      </SwiperSlide>
-      ))}
-      ...
-    </Swiper>
+          </SwiperSlide>
+        </div>))}
+      </Swiper>
+    </div>
   );
 };
+
+export default Testimonial;

@@ -1,5 +1,10 @@
 *{
     scroll-behavior: smooth;
+    z-index: 0;
+}
+
+.navbar_container{
+    z-index: 111 !important;
 }
 
 .nav-ul-parent:hover .nav-ul-child{
@@ -12,7 +17,7 @@
     visibility: hidden;
     transition: visibility 0.1s, top 0.1s;
     top: calc(100% + 15px);
-    z-index: 1;
+    z-index: 11;
 }
 
 .nav-ul-child li{
@@ -23,10 +28,11 @@
     display: grid;
     visibility: visible;
     top: calc(100% + 2px);
-    z-index: 4;
+    z-index: 11 !important;
 }
 
 .user-child{
+    z-index: 11 !important;
     visibility: hidden;
     transition: visibility 0.2s, top 0.2s;
     top: calc(100% + 15px);
@@ -38,7 +44,7 @@
 
 .explore_btn{
     border: 1px solid transparent;
-    padding: 12px 16px;
+    /* padding: 12px 16px; */
     background: #80B500ed;
     font-weight: 500;
     font-size: 14px;
@@ -73,7 +79,7 @@
 
 .learn_more_btn{
     border: 1px solid transparent;
-    padding: 12px 25px;
+    /* padding: 12px 25px; */
     background: white;
     font-weight: 500;
     font-size: 14px;
@@ -172,8 +178,199 @@ font-variation-settings:
     bottom: 0;
     height: 100%;
     z-index: 1111;
+    transition: margin-left 0.6s ease;
 }
 
-.custom_scrollbar{
+.cart_bar{
+    background: #00000085;
+    position: fixed;
+    width: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 1111;
+    transition: margin-right 0.6s ease;
+}
+
+.custom_scrollbar::-webkit-scrollbar{
+    width: 2px;
+    background: #e7e7e780;
+}
+
+.custom_scrollbar::-webkit-scrollbar-thumb{
+    width: 2px;
+    background: #d2d2d2;
+}
+
+.search_box{
+    background: white;
+    height: 80px;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(206, 196, 196, 0.431);
+}
+
+.border_not_last_child:not(:last-child){
+    border-bottom: 1px solid rgba(219, 217, 217, 0.698);
+}
+
+.view_btn{
+    background: #80B500;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid transparent;
+    z-index: 1;
+    overflow: hidden;
+    transition: color 0.3s;
+}
+
+.view_btn::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: white;
+    z-index: -1;
+    transition: background 0.3s, width 0.3s;
+}
+
+.view_btn:hover{
+    border: 1px solid #071C1F;
+    background: #071C1F;
+    color: #071C1F;
+}
+
+.view_btn:hover::before{
+    width: 100%;
+}
+
+.checkout_btn{
+    background: #071C1F;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    color: white;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: color 0.3s;
+}
+
+
+.checkout_btn::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: white;
+    z-index: -1;
+    transition: background 0.3s, width 0.3s;
+}
+
+.checkout_btn:hover{
+    border: 1px solid #80B500ed;
+    background: #80B500ed;
+    color: #071C1f;
+}
+
+.checkout_btn:hover::before{
+    width: 100%;
+}
+
+.swiper {
+  width: 100%;
+}
+
+@media screen and (min-width: 280px){
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 250px !important;
+        min-height: 300px;
+        margin: 0 12px;
+    }
+}
+
+@media screen and (min-width: 300px){
+    .swiper-slide {
+        width: 300px !important;
+    }
+}
+
+@media screen and (min-width: 400px){
+    .swiper-slide {
+        width: 380px !important;
+    }
+}
+
+@media screen and (min-width: 750px){
+    .swiper-slide {
+        width: 550px !important;
+        min-height: 200px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        gap: 15px;
+    }
+}
+
+
+
+
+@media screen and (min-width: 285px){
+    .slide_one{
+        width: 280px;
+    }
+}
+
+@media screen and (min-width: 370px){
+    .slide_one{
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 390px){
+    .slide_one{
+        width: 320px;
+    }
+}
+
+@media screen and (min-width: 410px){
+    .slide_one{
+        width: 350px;
+    }
+}
+
+@media screen and (min-width: 750px){
+    .slide_one{
+        width: 500px;
+        height: 240px;
+        display: flex;
+    }
+
+    .slide_one_child{
+        height: 80%;
+        width: 350px !important;
+    }
+}
+
+
+@media screen and (min-width: 285px){
+    .search_box{
+        top: 100% !important;
+        left: -4% !important;
+    }
+} 
     
+@media screen and (min-width: 1045px){
+    .search_box{
+        left: -50% !important;
+    }
 }

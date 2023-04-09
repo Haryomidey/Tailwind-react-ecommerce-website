@@ -16,7 +16,9 @@ module.exports = {
       },
       width: {
         1000: '200vw',
-        500: '100vw'
+        500: '100vw',
+        400: '400px',
+        600: '600px'
       },
       height: {
         70: '400px',
@@ -31,7 +33,9 @@ module.exports = {
       rajdhani: ['Rajdhani', "sans-serif"]
       },
       screens: {
-        md_small: '1045px'
+        lg_small: '763px',
+        md_small: '1045px',
+        sm_small: '350px'
       }
     }
   },
