@@ -33,8 +33,9 @@ module.exports = {
       rajdhani: ['Rajdhani', "sans-serif"]
       },
       screens: {
-        lg_small: '763px',
         md_small: '1045px',
+        md_l: '990px',
+        lg_small: '763px',
         sm_small: '350px'
       }
     }

@@ -1,13 +1,7 @@
-import React from 'react';
-import ProductImage from '../assets/images/product_one.png';
-
-const ProductCard = ({ProductDB}) => {
-
-    
-
+const ProductCard = ({ProductDB, sliceNum}) => {
   return (
     <>
-        {ProductDB.map(product => (
+        {ProductDB.slice(0, sliceNum).map(product => (
             <div className='w-64 h-96 bg-white border hover:shadow-xl relative' key={product.id}>
                 <div className='absolute top-3 right-3 bg-secondary-200 px-3 py-1 text-xs font-bold text-white border rounded-tl-xl rounded-br-xl'>{product.badge}</div>
                 <div>

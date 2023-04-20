@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Logo from '../assets/images/logo.png';
 import cartItemImageOne from '../assets/images/cart_item_one.png';
 import '../styles/style.css';
 
-const Navbar = ({ scrollPosition }) => {
+import { Link } from 'react-router-dom';
+
+const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
 
     const [isInputClicked, setIsInputClicked] = useState(false);
     const [navMenu, setNavMenu] = useState(false);
@@ -19,10 +20,6 @@ const Navbar = ({ scrollPosition }) => {
 
     const handleToggleSearch = () => {
         setToggleSearch(!toggleSearch);
-    }
-
-    const hideSearchBar = () => {
-        setToggleSearch(true);
     }
 
     const handleCartOpen = () => {
@@ -100,16 +97,16 @@ const Navbar = ({ scrollPosition }) => {
 
   return (
       <div className='flex items-center flex-wrap justify-center gap-4 sm:justify-between py-7 px-20 navbar_container'
-        style={scrollPosition > 450 && windowWidth >= 1045 ? { position: 'fixed', top: '0', width: '100%', height: '80px', padding: '5px 20px', boxShadow: '0 0 10px #d2d2d2', transition: 'top 1s ease', zIndex: '99', background: 'white'}
+        style={scrollPosition > 500 && windowWidth >= 1045 ? { position: 'fixed', top: '0', width: '100%', height: '80px', padding: '5px 20px', boxShadow: '0 0 10px #d2d2d2', transition: 'top 1s ease', zIndex: '99', background: `${bg_color}`}
         : { position: 'relative', }}
       >
         <div>
-            <img src = {Logo} alt = "logo" className='w-25'/>
+            <img src = {logo} alt = "logo" className='w-25'/>
         </div>
         <div>
-            <ul className=' gap-6 font-bold text-sm text-text_black font-rajdhani hidden md_small:flex'>
+            <ul className={`gap-6 font-bold text-sm ${color} font-rajdhani hidden md_small:flex`}>
                   <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>Home+
-                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans'>
+                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans shadow'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -120,7 +117,7 @@ const Navbar = ({ scrollPosition }) => {
                     </ul>
                   </li>
                 <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>About+ 
-                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans'>
+                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans shadow'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -131,7 +128,7 @@ const Navbar = ({ scrollPosition }) => {
                     </ul>
                 </li>
                 <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>Shop+ 
-                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans'>
+                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans shadow'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -142,7 +139,7 @@ const Navbar = ({ scrollPosition }) => {
                     </ul>
                 </li>
                 <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>News+ 
-                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans'>
+                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans shadow'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -153,7 +150,7 @@ const Navbar = ({ scrollPosition }) => {
                     </ul>
                 </li>
                 <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>Pages+ 
-                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans'>
+                    <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans shadow'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -192,8 +189,8 @@ const Navbar = ({ scrollPosition }) => {
                             person
                         </span>
                         <ul className='absolute text-gray-800 font-semibold right-0 w-40 bg-white p-4 cursor-auto user-child'>
-                            <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'>Sign in</li>
-                            <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'></li>
+                            <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'><Link to = "login">Sign in</Link></li>
+                            <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'><Link to = "register">Register</Link></li>
                             <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'>My Account</li>
                             <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'>Wishlist</li>
                         </ul>
@@ -262,7 +259,7 @@ const Navbar = ({ scrollPosition }) => {
             <div className='w-full bg-white h-full transition ease duration-500 sm_small:max-w-sm pt-16 pb-10 px-4 sm_small:px-9'>
                 <div className='overflow-y-scroll custom_scrollbar pr-4 h-full'>
                     <div className='border-b pb-5 flex items-center justify-between'>
-                        <img src={Logo} className = "w-28" />
+                        <img src={logo} className = "w-28" />
                         <span className="material-symbols-outlined cursor-pointer" onClick={handleNavMenuClose}>
                             close
                         </span>

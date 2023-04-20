@@ -2,11 +2,17 @@ import Home from "./pages/Home";
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ProductPage from "./pages/ProductPage";
 
 
 const App = () => {
 
   const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScrollToTop = () => {
+    window.scrollTo(0, 0);
+  }
 
   useEffect(() => {
     function handleScroll() {
@@ -25,7 +31,9 @@ const App = () => {
     <div className="App min-w-full overflow-hidden font-my_font">
       <Routes>
         <Route path="/" element={<Home scrollPosition={scrollPosition} />} />
-        <Route path="/login" element = {<Login />} />
+        <Route path="/login" element = {<Login scrollPosition={scrollPosition} handleScrollToTop = {handleScrollToTop} />} />
+        <Route path="/register" element = {<Register scrollPosition={scrollPosition} handleScrollToTop = {handleScrollToTop} />} />
+        <Route path="/product" element = {<ProductPage scrollPosition={scrollPosition} handleScrollToTop = {handleScrollToTop} />} />
       </Routes>
     </div>
   )

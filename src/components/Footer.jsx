@@ -113,7 +113,7 @@ const Footer = () => {
       {/*  */}
       <footer className='w-full h-20 bg-text_black flex flex-wrap sm_small:gap-10 items-center justify-center md:justify-between pl-7 pr-11 text-white'>
         <p className='font-open_sans text-sm'>All Rights Reserved @ Ayotech 2023</p>
-        <ul className='flex gap-4 font-rajdhani text-xs'>
+        <ul className='flex gap-4 font-rajdhani text-sm'>
           <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Terms & conditions</li>
           <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Claim</li>
           <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Privacy & Policy</li>

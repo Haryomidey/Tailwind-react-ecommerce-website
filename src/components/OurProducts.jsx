@@ -17,7 +17,7 @@ const OurProducts = () => {
           </ul>
         </div>
         <div className='my-20 min-h-fit px-11 flex justify-center gap-8 flex-wrap'>
-            <ProductCard ProductDB = {ProductDB} />
+            <ProductCard ProductDB = {ProductDB} sliceNum = {8} />
         </div>
     </div>
   )
