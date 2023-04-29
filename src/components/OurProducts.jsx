@@ -1,8 +1,10 @@
-import React from 'react'
+
 import ProductCard from './ProductCard';
 import ProductDB from '../Db/ProductDb';
+import SuccessfullyAdded from './SuccessfullyAdded';
 
-const OurProducts = () => {
+const OurProducts = ({setIsCartAdded, isCartAdded, cartAddedRef}) => {
+
   return (
     <div className = "min-h-screen font-open_sans">
         <h1 className = "font-bold sm:text-5xl text-3xl text-center text-text_black font-rajdhani">Our Products</h1>
@@ -17,7 +19,8 @@ const OurProducts = () => {
           </ul>
         </div>
         <div className='my-20 min-h-fit px-11 flex justify-center gap-8 flex-wrap'>
-            <ProductCard ProductDB = {ProductDB} sliceNum = {8} />
+        <ProductCard ProductDB = {ProductDB} sliceNum= {8} setIsCartAdded = {setIsCartAdded} isCartAdded = {isCartAdded} />
+        <SuccessfullyAdded setIsCartAdded = {setIsCartAdded} isCartAdded = {isCartAdded} cartAddedRef = {cartAddedRef} />
         </div>
     </div>
   )

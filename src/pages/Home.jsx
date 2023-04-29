@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 
 import HeroSection from '../components/HeroSection';
 import SecondSection from '../components/SecondSection';
@@ -15,6 +16,27 @@ import CuratedComponent from '../components/CuratedComponent';
 import ScrollToTop from '../components/ScrollToTop';
 
 const Home = ({ scrollPosition, handleScrollToTop }) => {
+
+    const [isCartAdded, setIsCartAdded] = useState(false);
+    const cartAddedRef = useRef();
+
+    useEffect(() => {
+        const cartAddedOutsideClick = (e) => {
+            if (!cartAddedRef.current.contains(e.target)) {
+                setIsCartAdded(false);
+            }
+                else {
+            setIsCartAdded(true);
+            }
+        }
+
+        document.addEventListener('mousedown', cartAddedOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', cartAddedOutsideClick);
+        }
+        
+    }, []);
 
   return (
     <div className='w-screen'>
@@ -57,7 +79,7 @@ const Home = ({ scrollPosition, handleScrollToTop }) => {
             <SecondSection />
         </div>
         <div>
-            <OurProducts />
+            <OurProducts setIsCartAdded = {setIsCartAdded} isCartAdded = {isCartAdded} cartAddedRef = {cartAddedRef} />
         </div>
         
         {/* Hot deal section starts */}
@@ -95,7 +117,7 @@ const Home = ({ scrollPosition, handleScrollToTop }) => {
         {/* Featured product starts */}
         <div className='w-full min-h-110 px-10 pt-20'>
             <h1 className='font-rajdhani sm:text-5xl text-3xl text-text_black text-center'>Featured Products</h1>
-            <div className='flex flex-wrap justify-center gap-10 mt-10'><ProductCard ProductDB = {ProductDB} sliceNum = {8} /></div>
+            <div className='flex flex-wrap justify-center gap-10 mt-10'><ProductCard ProductDB = {ProductDB} sliceNum = {8} setIsCartAdded = {setIsCartAdded} isCartAdded = {isCartAdded} cartAddedRef = {cartAddedRef} /></div>
         </div>
         {/* Featured product ends */}
         
@@ -122,13 +144,6 @@ const Home = ({ scrollPosition, handleScrollToTop }) => {
             </div>
             <div className='pt-10'>
                 <Testimonial />
-                {/* <div className='mt-8 w-full flex justify-center gap-5'>
-                    <div className='w-[10px] h-[10px] bg-secondary-200 rounded-full cursor-pointer'></div>
-                    <div className='w-[10px] h-[10px] bg-secondary-200 rounded-full cursor-pointer'></div>
-                    <div className='w-[10px] h-[10px] bg-secondary-200 rounded-full cursor-pointer'></div>
-                    <div className='w-[10px] h-[10px] bg-secondary-200 rounded-full cursor-pointer'></div>
-                    <div className='w-[10px] h-[10px] bg-secondary-200 rounded-full cursor-pointer'></div>
-                </div> */}
             </div>
         </div>
         {/* Testimonial section ends */}

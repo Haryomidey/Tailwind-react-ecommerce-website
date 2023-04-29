@@ -30,10 +30,10 @@ const App = () => {
   return (
     <div className="App min-w-full overflow-hidden font-my_font">
       <Routes>
-        <Route path="/" element={<Home scrollPosition={scrollPosition} />} />
+        <Route path="/" element={<Home scrollPosition={scrollPosition} handleScrollToTop = {handleScrollToTop} />} />
         <Route path="/login" element = {<Login scrollPosition={scrollPosition} handleScrollToTop = {handleScrollToTop} />} />
         <Route path="/register" element = {<Register scrollPosition={scrollPosition} handleScrollToTop = {handleScrollToTop} />} />
-        <Route path="/product" element = {<ProductPage scrollPosition={scrollPosition} handleScrollToTop = {handleScrollToTop} />} />
+        <Route path={`/product/:id`} element = {<ProductPage scrollPosition={scrollPosition} handleScrollToTop = {handleScrollToTop} />} />
       </Routes>
     </div>
   )

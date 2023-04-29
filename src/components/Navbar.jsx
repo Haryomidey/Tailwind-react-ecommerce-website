@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import cartItemImageOne from '../assets/images/cart_item_one.png';
 import '../styles/style.css';
 
@@ -17,17 +17,50 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
     const [toggleThree, setToggleThree] = useState(false);
     const [toggleFour, setToggleFour] = useState(false);
     const [toggleFive, setToggleFive] = useState(false);
+    const navRef = useRef();
+    const cartRef = useRef();
+
+    useEffect(() => {
+        const menuOutsideClick = (e) => {
+            if (!navRef.current.contains(e.target)) {
+                setNavMenu(false);
+            }
+            else {
+                setNavMenu(true);
+            }
+        }
+
+        document.addEventListener('mousedown', menuOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', menuOutsideClick);
+        }
+        
+    }, []);
+
+
+    useEffect(() => {
+
+        const cartOutsideClick = (e) => {
+            if (!cartRef.current.contains(e.target)) {
+                setCartMenu(false);
+            }
+            else {
+                setCartMenu(true);
+            }
+        }
+
+        document.addEventListener('mousedown', cartOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', cartOutsideClick);
+        }
+        
+    }, []);
+
 
     const handleToggleSearch = () => {
         setToggleSearch(!toggleSearch);
-    }
-
-    const handleCartOpen = () => {
-        setCartMenu(true);
-    }
-
-    const handleCartClose = () => {
-        setCartMenu(false);
     }
 
     const handleFocus = () => {
@@ -37,14 +70,6 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
     const handleBlur = () => {
         setIsInputClicked(false);
     };
-
-    const handleNavMenuOpen = () => {
-        setNavMenu(true);
-    }
-
-    const handleNavMenuClose = () => {
-        setNavMenu(false);
-    }
 
     useEffect(() => {
         function handleResize() {
@@ -97,14 +122,14 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
 
   return (
       <div className='flex items-center flex-wrap justify-center gap-4 sm:justify-between py-7 px-20 navbar_container'
-        style={scrollPosition > 500 && windowWidth >= 1045 ? { position: 'fixed', top: '0', width: '100%', height: '80px', padding: '5px 20px', boxShadow: '0 0 10px #d2d2d2', transition: 'top 1s ease', zIndex: '99', background: `${bg_color}`}
+        style={scrollPosition > 500 && windowWidth >= 1045 ? { position: 'fixed', top: '0', width: '100%', height: '80px', padding: '5px 20px', boxShadow: '0 0 10px #d2d2d2', transition: 'top 1s ease', background: `${bg_color}`}
         : { position: 'relative', }}
       >
         <div>
             <img src = {logo} alt = "logo" className='w-25'/>
         </div>
         <div>
-            <ul className={`gap-6 font-bold text-sm ${color} font-rajdhani hidden md_small:flex`}>
+            <ul className={`gap-6 font-bold text-lg ${color} font-rajdhani hidden md_small:flex`}>
                   <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease relative nav-ul-parent py-5'>Home+
                     <ul className='w-40 bg-white  border-t-4 border-secondary-200 absolute p-5 gap-3 font-semibold text-lg text-gray-700 cursor-auto nav-ul-child font-open_sans shadow'>
                       <li className='hover:text-secondary-200 transition duration-300 ease cursor-pointer'>Home style</li>
@@ -165,7 +190,7 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
         </div>
         <div className='flex items-center gap-3'>
             <div>
-                <button className='hover:bg-secondary-100 btn ease-out font-rajdhani text-4xl hidden md_small:block'>GET A QUOTE</button>
+                <button className='hover:bg-secondary-100 bg-secondary-200 px-6 py-[18px] transition ease duration-300 ease-out font-rajdhani text-sm text-white hidden md_small:block'>GET A QUOTE</button>
             </div>
             <div>
                 <ul className='flex items-center gap-3 font-open_sans relative'>
@@ -195,7 +220,7 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
                             <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'>Wishlist</li>
                         </ul>
                     </li>
-                    <li className='bg-white text-gray-500 cursor-pointer hover:text-white hover:bg-secondary-200 transition ease duration-300 p-4 flex items-center drop-shadow-2xl relative' onClick={handleCartOpen}>
+                    <li className='bg-white text-gray-500 cursor-pointer hover:text-white hover:bg-secondary-200 transition ease duration-300 p-4 flex items-center drop-shadow-2xl relative' onClick={() => setCartMenu(!cartMenu)}>
                         <span className="material-symbols-outlined">
                             shopping_cart
                         </span>
@@ -203,7 +228,7 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
                             2
                         </p>
                     </li>
-                    <li className='bg-white text-gray-500 cursor-pointer p-4 flex items-center drop-shadow-2xl md_small:hidden' onClick={handleNavMenuOpen}>
+                    <li className='bg-white text-gray-500 cursor-pointer p-4 flex items-center drop-shadow-2xl md_small:hidden' onClick={() => setNavMenu(!navMenu)}>
                         <span className="material-symbols-outlined">
                             menu
                         </span>
@@ -215,10 +240,10 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
         {/* Cart Bar Section Starts */}
         
         <div className='cart_bar flex justify-end' style={!cartMenu ? {marginRight: '-100%'} : {marginRight: '0'}}>
-            <div className='w-full bg-white h-full transition ease duration-500 sm_small:max-w-sm pt-16 pb-10 px-4 sm_small:px-9'>
+            <div className='w-full bg-white h-full transition ease duration-500 sm_small:max-w-sm pt-16 pb-10 px-4 sm_small:px-9' ref = {cartRef}>
                 <div className='flex items-center justify-between border-b mb-8 pb-8'>
                     <h1 className='font-bold'>Cart</h1>
-                    <span className="material-symbols-outlined cursor-pointer" onClick={handleCartClose}>
+                    <span className="material-symbols-outlined cursor-pointer" onClick={() => setCartMenu(false)}>
                         close
                     </span>
                 </div>
@@ -256,11 +281,11 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
 
         {/* Side Bar Section Starts */}
         {windowWidth < 1045 ? <div className='secondary_nav' style={!navMenu ? {marginLeft: '-100%'} : {marginLeft: '0'}}>
-            <div className='w-full bg-white h-full transition ease duration-500 sm_small:max-w-sm pt-16 pb-10 px-4 sm_small:px-9'>
+            <div className='w-full bg-white h-full transition ease duration-500 sm_small:max-w-sm pt-16 pb-10 px-4 sm_small:px-9' ref = {navRef}>
                 <div className='overflow-y-scroll custom_scrollbar pr-4 h-full'>
                     <div className='border-b pb-5 flex items-center justify-between'>
                         <img src={logo} className = "w-28" />
-                        <span className="material-symbols-outlined cursor-pointer" onClick={handleNavMenuClose}>
+                        <span className="material-symbols-outlined cursor-pointer" onClick={() => {setNavMenu(false)}}>
                             close
                         </span>
                     </div>

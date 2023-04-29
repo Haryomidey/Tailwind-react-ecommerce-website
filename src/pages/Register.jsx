@@ -11,7 +11,7 @@ const Register = ({ scrollPosition, handleScrollToTop }) => {
   return (
     <div className="w-full min-h-screen font-open_sans">
         <div style={{backgroundImage: `url(${BackgroundImage})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundColor: '#061A1E', backgroundBlendMode:""}} className = "sm:h-[490px] h-[430px] w-[100%]">
-            <Navbar scrollPosition = {scrollPosition} color = "text-white" bg_color = 'black' logo = {LogoWhite} />
+            <Navbar scrollPosition = {scrollPosition} color = "text-white" bg_color = '#071A1E' logo = {LogoWhite} />
             <div className="text-center sm:flex sm:items-center sm:justify-between sm:mt-40 mt-16 px-16">
                 <div className ="flex-wrap">
                     <h2 className="font-rajdhani text-secondary-200 text-lg">//WELCOME TO OUR COMPANY</h2>

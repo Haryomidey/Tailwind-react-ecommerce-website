@@ -1,12 +1,15 @@
-const ProductCard = ({ProductDB, sliceNum}) => {
+import { Link } from "react-router-dom";
+
+const ProductCard = ({ ProductDB, sliceNum, setIsCartAdded, isCartAdded }) => {
+
   return (
     <>
         {ProductDB.slice(0, sliceNum).map(product => (
-            <div className='w-64 h-96 bg-white border hover:shadow-xl relative' key={product.id}>
+            <div className='w-64 h-96 bg-white border hover:shadow-xl relative product_parent' key={product.id}>
                 <div className='absolute top-3 right-3 bg-secondary-200 px-3 py-1 text-xs font-bold text-white border rounded-tl-xl rounded-br-xl'>{product.badge}</div>
-                <div>
+                <Link to ={`product/${product.id}`} >
                     <img src ={product.productImage} />
-                </div>
+                </Link>
                 <div className='text-center mt-6'>
                     <div className='text-xs flex items-center justify-center'>
                         <span className="material-symbols-outlined text-lg text-yellow-400 icon-filled cursor-pointer hover:text-secondary-200 transition ease duration-300">
@@ -32,15 +35,15 @@ const ProductCard = ({ProductDB, sliceNum}) => {
                         <p className='line-through opacity-60'>${product.actualPrice}</p>
                     </div>
                 </div>
-                <div className='w-full h-3/4 absolute top-0 right-0 flex items-center justify-center text-white product_parent'>
-                    <div className='flex gap-2 product_child'>
+                <div className='w-full h-auto product_child absolute top-0 right-0 flex items-center justify-center text-white'>
+                    <div className='flex gap-2'>
                         <div className="h-10 w-10 rounded-full bg-white text-black cursor-pointer flex items-center justify-center transition ease duration-300 hover:bg-secondary-200 hover:text-white shadow">
                             <span className='material-symbols-outlined text-lg'>
                                 visibility
                             </span>
                         </div>
                         <div className="h-10 w-10 rounded-full bg-white text-black cursor-pointer flex items-center justify-center transition ease duration-300 hover:bg-secondary-200 hover:text-white shadow">
-                            <span className='material-symbols-outlined text-lg'>
+                            <span className='material-symbols-outlined text-lg' onClick={() => setIsCartAdded(!isCartAdded)}>
                                 shopping_cart
                             </span>
                         </div>

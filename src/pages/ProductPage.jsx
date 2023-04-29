@@ -1,9 +1,8 @@
 import Navbar from "../components/Navbar";
 import BackgroundImage from '../assets/images/login_background_image.jpg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import LogoWhite from '../assets/images/logo_white.png';
-
-import ProductDB from '../Db/ProductDb';
 
 import { Link } from 'react-router-dom';
 import CuratedComponent from "../components/CuratedComponent";
@@ -20,15 +19,18 @@ import SmallPreviewSix from '../assets/images/product_image_six.png';
 import SmallPreviewSeven from '../assets/images/product_image_seven.png';
 
 import PaymentTwo from '../assets/images/payment_two.png';
-import { PromoImage } from '../assets/images/promo_image.png';
+import PromoImage from '../assets/images/promo_image.jpg';
 import ProductCard from "../components/ProductCard";
 import Reviews from "../components/Reviews";
 import TopRelatedProducts from "../components/TopRelatedProducts";
+
+import ProductDB from "../Db/ProductDb";
 
 const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
 
     const [isDescription, setIsDescription] = useState(true);
     const [isReview, setIsReview] = useState(false);
+    const id = useParams()
 
     const handleDescription = () => {
         setIsDescription(true);
@@ -40,10 +42,19 @@ const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
         setIsDescription(false);
     }
 
+    let MappedProduct;
+
+    useEffect(() => {
+        MappedProduct = ProductDB.filter(product => {
+            return product.id == id.id;
+        })
+        console.log(MappedProduct);
+    }, []);
+
   return (
     <div className="w-full min-h-screen font-open_sans">
         <div style={{backgroundImage: `url(${BackgroundImage})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundColor: '#061A1E', backgroundBlendMode:""}} className = "sm:h-[490px] h-[430px] w-[100%]">
-            <Navbar scrollPosition = {scrollPosition} color = "text-white" bg_color = 'black' logo = {LogoWhite} />
+            <Navbar scrollPosition = {scrollPosition} color = "text-white" bg_color = '#071A1E' logo = {LogoWhite} />
             <div className="text-center sm:flex sm:items-center sm:justify-between sm:mt-40 mt-16 px-16">
                 <div className ="flex-wrap">
                     <h2 className="font-rajdhani text-secondary-200 text-lg text-left">//WELCOME TO OUR COMPANY</h2>
@@ -57,14 +68,14 @@ const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
             </div>
         </div>
         <div className="bg-white w-full min-h-screen text-center text-text_black">
-            <div className="p-20">
+            <div className="sm:px-20 px-2 py-20">
                 {/* Container div */}
                 <div>
-                    <div className="flex flex-wrap justify-between">
+                    <div className="flex flex-wrap sm:justify-between justify-center">
                         {/* Product preview */}
                         <div className="w-[68%] pr-10">
                             <div className="flex gap-6 flex-wrap">
-                                <div className="w-1/2">
+                                <div className="sm:w-1/2">
                                     <img src={DisplayImage} className ="w-[400px]" />
                                     <div className="overflow-hidden flex w-[400px] gap-4 mt-5">
                                         <img src={SmallPreviewOne} className = "w-[22%]" alt="" />

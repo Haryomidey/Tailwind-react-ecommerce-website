@@ -4,7 +4,7 @@
 }
 
 .navbar_container{
-    z-index: 111 !important;
+    z-index: 1;
 }
 
 .nav-ul-parent:hover .nav-ul-child{
@@ -17,7 +17,7 @@
     visibility: hidden;
     transition: visibility 0.1s, top 0.1s;
     top: calc(100% + 15px);
-    z-index: 11;
+    z-index: 1;
 }
 
 .nav-ul-child li{
@@ -28,11 +28,11 @@
     display: grid;
     visibility: visible;
     top: calc(100% + 2px);
-    z-index: 11 !important;
+    z-index: 1 !important;
 }
 
 .user-child{
-    z-index: 11 !important;
+    z-index: 1 !important;
     visibility: hidden;
     transition: visibility 0.2s, top 0.2s;
     top: calc(100% + 15px);
@@ -120,9 +120,11 @@ font-variation-settings:
   'opsz' 48 
 }
 
+
 .product_child{
     visibility: hidden;
     transition: visibility 0.2s, transform 0.3s;
+    margin-top: 50%;
 }
 
 .product_parent:hover .product_child{
@@ -177,7 +179,7 @@ font-variation-settings:
     top: 0;
     bottom: 0;
     height: 100%;
-    z-index: 1111;
+    z-index: 11;
     transition: margin-left 0.6s ease;
 }
 
@@ -189,7 +191,7 @@ font-variation-settings:
     top: 0;
     bottom: 0;
     height: 100%;
-    z-index: 1111;
+    z-index: 11;
     transition: margin-right 0.6s ease;
 }
 
@@ -308,8 +310,33 @@ font-variation-settings:
     width: 100%;
 }
 
+.s_added{
+    background: #000000b8;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 11 !important;
+    visibility: hidden;
+    transition: visibility 0.3s ease-in;
+}
 
+.s_added.active{
+    transition: visibility 0.3s ease-in;
+    visibility: visible;
+}
 
+.s_added_child{
+    transition: transform 0.5s ease;
+    transform: translateY(-20%);
+}
+
+.s_added_child.active{
+    transform: translateY(0);
+}
 
 @media screen and (min-width: 280px){
     .swiper-slide {
