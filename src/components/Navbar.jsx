@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import cartItemImageOne from '../assets/images/cart_item_one.png';
 import '../styles/style.css';
 
 import { Link } from 'react-router-dom';
+import {Cart} from "../hooks/Context";
 
 const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
 
@@ -19,6 +20,9 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
     const [toggleFive, setToggleFive] = useState(false);
     const navRef = useRef();
     const cartRef = useRef();
+
+    const { cart, setCart, total, setTotal, productLength } = useContext(Cart);
+
 
     useEffect(() => {
         const menuOutsideClick = (e) => {
@@ -119,6 +123,10 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
         setToggleFour(false);
         setToggleFive(!toggleFive);
     }
+
+    useEffect(() => {
+        setTotal(cart.reduce((acc, cur) => acc + Number(cur.discountedPrice), 0))
+    }, [cart])
 
   return (
       <div className='flex items-center flex-wrap justify-center gap-4 sm:justify-between py-7 px-20 navbar_container'
@@ -225,7 +233,7 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
                             shopping_cart
                         </span>
                         <p className='absolute text-sm font-bold top-2 right-2'>
-                            2
+                            {cart.length}
                         </p>
                     </li>
                     <li className='bg-white text-gray-500 cursor-pointer p-4 flex items-center drop-shadow-2xl md_small:hidden' onClick={() => setNavMenu(!navMenu)}>
@@ -248,25 +256,31 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
                     </span>
                 </div>
                 <div className='overflow-y-scroll custom_scrollbar h-64 pt-4'>
-                    <div className='flex gap-4 border_not_last_child pb-5 pl-3'>
-                        <div className='w-20 h-20 bg-gray-100 relative'>
-                            <img src = {cartItemImageOne} className = "w-full h-full" />
-                            <div className='rounded-full bg-white flex items-center justify-center shadow cursor-pointer absolute -top-2 -left-2 w-5 h-5 pb-1'>
-                                x
+                    {
+                        cart.map(prod => (
+                            <div className='flex gap-4 border_not_last_child py-5 pl-3'>
+                                <div className='w-20 h-20 bg-gray-100 relative'>
+                                    <img src = {prod.productImage} className = "w-full h-full" />
+                                    <div className='rounded-full bg-white flex items-center justify-center shadow cursor-pointer absolute -top-2 -left-2 w-5 h-5 pb-1' onClick={() => {
+                                        setCart(cart.filter((product) => product.id !== prod.id))
+                                    }}>
+                                        x
+                                    </div>
+                                </div>
+                                <div>
+                                    <h1 className='font-rajdhani text-text_black text-sm'>
+                                        {prod.productName}
+                                    </h1>
+                                    <p className='text-sm pt-2'>{productLength} x ${prod.discountedPrice}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <h1 className='font-rajdhani text-text_black text-sm'>
-                                Red Hot Tomato
-                            </h1>
-                            <p className='text-sm pt-2'>1 x $65.00</p>
-                        </div>
-                    </div>
+                        ))
+                    }
                 </div>
                 
                 <div className='border-y mt-5 py-4 flex items-center justify-between'>
                     <div className='font-rajdhani'>Subtotal:</div>
-                    <div className='font-rajdhani text-secondary-200'>$310.00</div>
+                      <div className='font-rajdhani text-secondary-200'>${total}</div>
                 </div>
                   
                 <div className='flex justify-between mt-8'>

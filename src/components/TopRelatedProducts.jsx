@@ -2,7 +2,7 @@ import ProductImage from '../assets/images/product_image_five.png';
 
 const TopRelatedProducts = () => {
   return (
-    <div className='my-4 border-b pb-6 flex items-center gap-3'>
+    <div className='my-4 border_not_last_child pb-6 flex items-center gap-3'>
         <div>
             <img src={ProductImage} className = "w-[100px]" alt="" />
         </div>

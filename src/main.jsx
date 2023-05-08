@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import { BrowserRouter } from "react-router-dom";
+import Context from './hooks/Context';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <React.StrictMode>
-      <App />
+      <Context>
+        <App />
+      </Context>
     </React.StrictMode>
   </BrowserRouter>
 )

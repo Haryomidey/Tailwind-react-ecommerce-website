@@ -1,6 +1,17 @@
+import { useContext } from 'react';
 import { Link } from "react-router-dom";
 
+import {Cart} from "../hooks/Context";
+
 const ProductCard = ({ ProductDB, sliceNum, setIsCartAdded, isCartAdded }) => {
+
+    const { cart, setCart, setProductLength } = useContext(Cart);
+    
+    const handleCartClick = (product) => {
+        setIsCartAdded(!isCartAdded);
+        setCart(([...cart, product]));
+        setProductLength(1);
+    }
 
   return (
     <>
@@ -43,9 +54,21 @@ const ProductCard = ({ ProductDB, sliceNum, setIsCartAdded, isCartAdded }) => {
                             </span>
                         </div>
                         <div className="h-10 w-10 rounded-full bg-white text-black cursor-pointer flex items-center justify-center transition ease duration-300 hover:bg-secondary-200 hover:text-white shadow">
-                            <span className='material-symbols-outlined text-lg' onClick={() => setIsCartAdded(!isCartAdded)}>
+                            {cart.includes(product) ? (
+                                <span className='material-symbols-outlined text-lg icon-filled' onClick={() => {
+                                setIsCartAdded(!isCartAdded);
+                            }
+                            }>
                                 shopping_cart
                             </span>
+                            )
+                            :   
+                            (
+                                <span className='material-symbols-outlined text-lg' onClick={() => (handleCartClick(product))}>
+                                    shopping_cart
+                                </span>
+                            )
+                            }
                         </div>
                         <div className="h-10 w-10 rounded-full bg-white text-black cursor-pointer flex items-center justify-center transition ease duration-300 hover:bg-secondary-200 hover:text-white shadow">
                             <span className='material-symbols-outlined text-lg'>

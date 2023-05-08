@@ -1,5 +1,7 @@
 import ProductImage from '../assets/images/product_image_one.png';
 import PaymentImage from '../assets/images/payment_one.png';
+import { Link } from 'react-router-dom';
+
 const SuccessfullyAdded = ({setIsCartAdded, isCartAdded, cartAddedRef}) => {
 
     return (
@@ -20,9 +22,11 @@ const SuccessfullyAdded = ({setIsCartAdded, isCartAdded, cartAddedRef}) => {
                         <p> Successfully added to your Cart</p>
                     </div>
                     <div className='mt-7 flex gap-4'>
-                        <button className='view_btn font-[700] text-[15px]'>
-                            View Cart
-                        </button>
+                        <Link to ="cart">
+                            <button className='view_btn font-[700] text-[15px]'>
+                                View Cart
+                            </button>
+                        </Link>
                         <button className='checkout_btn font-[700] text-[15px]'>
                             Checkout
                         </button>
