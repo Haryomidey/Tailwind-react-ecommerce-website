@@ -3,7 +3,7 @@ import cartItemImageOne from '../assets/images/cart_item_one.png';
 import '../styles/style.css';
 
 import { Link } from 'react-router-dom';
-import {Cart} from "../hooks/Context";
+import { CartContext } from '../hooks/context/Context';
 
 const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
 
@@ -21,9 +21,11 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
     const navRef = useRef();
     const cartRef = useRef();
 
-    const { cart, setCart, total, setTotal, productLength } = useContext(Cart);
-
-
+    const GlobalState = useContext(CartContext);
+    const { state, dispatch } = GlobalState;
+    const total = state.reduce((total, item) => {
+        return Number(total + item.discountedPrice * item.quantity);
+    }, 0);
     useEffect(() => {
         const menuOutsideClick = (e) => {
             if (!navRef.current.contains(e.target)) {
@@ -123,10 +125,6 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
         setToggleFour(false);
         setToggleFive(!toggleFive);
     }
-
-    useEffect(() => {
-        setTotal(cart.reduce((acc, cur) => acc + Number(cur.discountedPrice), 0))
-    }, [cart])
 
   return (
       <div className='flex items-center flex-wrap justify-center gap-4 sm:justify-between py-7 px-20 navbar_container'
@@ -233,7 +231,7 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
                             shopping_cart
                         </span>
                         <p className='absolute text-sm font-bold top-2 right-2'>
-                            {cart.length}
+                            {state.length > 0 ? state.length : ''}
                         </p>
                     </li>
                     <li className='bg-white text-gray-500 cursor-pointer p-4 flex items-center drop-shadow-2xl md_small:hidden' onClick={() => setNavMenu(!navMenu)}>
@@ -256,26 +254,22 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
                     </span>
                 </div>
                 <div className='overflow-y-scroll custom_scrollbar h-64 pt-4'>
-                    {
-                        cart.map(prod => (
-                            <div className='flex gap-4 border_not_last_child py-5 pl-3'>
-                                <div className='w-20 h-20 bg-gray-100 relative'>
-                                    <img src = {prod.productImage} className = "w-full h-full" />
-                                    <div className='rounded-full bg-white flex items-center justify-center shadow cursor-pointer absolute -top-2 -left-2 w-5 h-5 pb-1' onClick={() => {
-                                        setCart(cart.filter((product) => product.id !== prod.id))
-                                    }}>
-                                        x
-                                    </div>
-                                </div>
-                                <div>
-                                    <h1 className='font-rajdhani text-text_black text-sm'>
-                                        {prod.productName}
-                                    </h1>
-                                    <p className='text-sm pt-2'>{productLength} x ${prod.discountedPrice}</p>
-                                </div>
+                    {state.length < 1 && (<p className = "text-center">You Cart is empty!!!</p>)}
+                   { state.map(product => (<div className='flex gap-4 border_not_last_child py-5 pl-3'>
+                        <div className='w-20 h-20 bg-gray-100 relative'>
+                            <img src = {cartItemImageOne} className = "w-full h-full" />
+                            <div className='rounded-full bg-white flex items-center justify-center shadow cursor-pointer absolute -top-2 -left-2 w-5 h-5 pb-1' onClick={() => dispatch({type: 'REMOVE', payload: product})}>
+                                x
                             </div>
-                        ))
-                    }
+                        </div>
+                        <div>
+                            <h1 className='font-rajdhani text-text_black text-sm'>
+                                {product.productName}
+                            </h1>
+                            <p className='text-sm pt-2'>${product.quantity} x {product.discountedPrice}</p>
+                        </div>
+                    </div>))}
+                       
                 </div>
                 
                 <div className='border-y mt-5 py-4 flex items-center justify-between'>

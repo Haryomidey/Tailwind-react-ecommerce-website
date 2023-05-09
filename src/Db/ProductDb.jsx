@@ -13,8 +13,8 @@ const ProductDB = [
         productImage: ProductImageOne,
         numbers: 24,
         productName: 'Carrots Group Scal',
-        actualPrice: '46.00',
-        discountedPrice: '32.00',
+        actualPrice: 46.00,
+        discountedPrice: 32.00,
         badge: '-19%'
     },
     {
@@ -22,8 +22,8 @@ const ProductDB = [
         productImage: ProductImageTwo,
         numbers: 24,
         productName: 'Carrots Group Scal',
-        actualPrice: '46.00',
-        discountedPrice: '32.00',
+        actualPrice: 46.00,
+        discountedPrice: 32.00,
         badge: '-19%'
     },
     {
@@ -31,8 +31,8 @@ const ProductDB = [
         productImage: ProductImageThree,
         numbers: 0,
         productName: 'Orange Fresh Juice',
-        actualPrice: '92.00',
-        discountedPrice: '75.00',
+        actualPrice: 92.00,
+        discountedPrice: 75.00,
         badge: 'NEW'
     },
     {
@@ -40,8 +40,8 @@ const ProductDB = [
         productImage: ProductImageFour,
         numbers: 0,
         productName: 'Poultry Farm Meat',
-        actualPrice: '85.00',
-        discountedPrice: '78.00',
+        actualPrice: 85.00,
+        discountedPrice: 78.00,
         badge: 'NEW'
     },
     {
@@ -49,8 +49,8 @@ const ProductDB = [
         productImage: ProductImageFive,
         numbers: 0,
         productName: 'Poultry Farm Meat',
-        actualPrice: '85.00',
-        discountedPrice: '78.00',
+        actualPrice: 85.00,
+        discountedPrice: 78.00,
         badge: 'NEW'
     },
     {
@@ -58,8 +58,8 @@ const ProductDB = [
         productImage: ProductImageSix,
         numbers: 0,
         productName: 'Orange Slice Meat',
-        actualPrice: '180.00',
-        discountedPrice: '150.00',
+        actualPrice: 180.00,
+        discountedPrice: 150.00,
         badge: 'NEW'
     },
     {
@@ -67,8 +67,8 @@ const ProductDB = [
         productImage: ProductImageSeven,
         numbers: 24,
         productName: 'Carrots Group Scal',
-        actualPrice: '46.00',
-        discountedPrice: '32.00',
+        actualPrice: 46.00,
+        discountedPrice: 32.00,
         badge: '-19%'
     },
     {
@@ -76,8 +76,8 @@ const ProductDB = [
         productImage: ProductImageEight,
         numbers: 0,
         productName: 'Orange',
-        actualPrice: '92.00',
-        discountedPrice: '75.00',
+        actualPrice: 92.00,
+        discountedPrice: 75.00,
         badge: 'NEW'
     }
 ]

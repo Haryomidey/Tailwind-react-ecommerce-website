@@ -33,8 +33,8 @@ const Testimonial = () => {
         className="mySwiper"
       >
 
-        {TestimonialDB.map(testimonial => (
-          <div key={testimonial.id}>
+        {TestimonialDB.map((testimonial, index) => (
+          <div key={index}>
             <SwiperSlide className='bg-white shadow lg_small:flex'>
               <div className='w-full lg_small:w-2/4 px-8 lg_small:px-0 lg_small:pl-5 pt-8 pb-2'>
                 <img src= {testimonial.image} alt="" className='w-2/4 lg_small:w-full h-full lg_small:h-[150px] bg-cover' />

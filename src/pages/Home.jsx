@@ -15,7 +15,13 @@ import Footer from '../components/Footer';
 import CuratedComponent from '../components/CuratedComponent';
 import ScrollToTop from '../components/ScrollToTop';
 
+import { useContext } from 'react';
+import { CartContext } from '../hooks/context/Context';
+
 const Home = ({ scrollPosition, handleScrollToTop }) => {
+
+    const GlobalState = useContext(CartContext);
+    const { state, dispatch } = GlobalState;
 
     const [isCartAdded, setIsCartAdded] = useState(false);
     const cartAddedRef = useRef();
@@ -117,7 +123,18 @@ const Home = ({ scrollPosition, handleScrollToTop }) => {
         {/* Featured product starts */}
         <div className='w-full min-h-110 px-10 pt-20'>
             <h1 className='font-rajdhani sm:text-5xl text-3xl text-text_black text-center'>Featured Products</h1>
-            <div className='flex flex-wrap justify-center gap-10 mt-10'><ProductCard ProductDB = {ProductDB} sliceNum = {8} setIsCartAdded = {setIsCartAdded} isCartAdded = {isCartAdded} cartAddedRef = {cartAddedRef} /></div>
+            <div className='flex flex-wrap justify-center gap-10 mt-10'>
+                {ProductDB.map((product) => (
+                <ProductCard
+                    product={product}
+                    setIsCartAdded={setIsCartAdded}
+                    isCartAdded={isCartAdded}
+                    dispatch={dispatch}
+                    state={state}
+                    key={product.id}
+                />
+          ))}
+            </div>
         </div>
         {/* Featured product ends */}
         

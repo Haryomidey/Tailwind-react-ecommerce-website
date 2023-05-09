@@ -1,9 +1,13 @@
-
 import ProductCard from './ProductCard';
 import ProductDB from '../Db/ProductDb';
 import SuccessfullyAdded from './SuccessfullyAdded';
 
-const OurProducts = ({setIsCartAdded, isCartAdded, cartAddedRef}) => {
+import { useContext } from 'react';
+import { CartContext } from '../hooks/context/Context';
+
+const OurProducts = ({ setIsCartAdded, isCartAdded, cartAddedRef }) => {
+  const GlobalState = useContext(CartContext);
+  const { state, dispatch } = GlobalState;
 
   return (
     <div className = "min-h-screen font-open_sans">
@@ -18,9 +22,22 @@ const OurProducts = ({setIsCartAdded, isCartAdded, cartAddedRef}) => {
             <li className='font-bold text-sm pr-8'>FISH & MEAT</li>
           </ul>
         </div>
-        <div className='my-20 min-h-fit px-11 flex justify-center gap-8 flex-wrap'>
-        <ProductCard ProductDB = {ProductDB} sliceNum= {8} setIsCartAdded = {setIsCartAdded} isCartAdded = {isCartAdded} />
-        <SuccessfullyAdded setIsCartAdded = {setIsCartAdded} isCartAdded = {isCartAdded} cartAddedRef = {cartAddedRef} />
+        <div className='my-20 min-h-fit px-11 flex justify-center gap-10 flex-wrap'>
+          {ProductDB.map((product) => (
+            <ProductCard
+              product={product}
+              setIsCartAdded={setIsCartAdded}
+              isCartAdded={isCartAdded}
+              dispatch={dispatch}
+              state = {state}
+              key={product.id}
+            />
+          ))}
+          <SuccessfullyAdded 
+            setIsCartAdded={setIsCartAdded}
+            isCartAdded={isCartAdded}
+            cartAddedRef={cartAddedRef}
+          />
         </div>
     </div>
   )

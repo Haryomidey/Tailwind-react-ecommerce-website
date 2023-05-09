@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import BackgroundImage from '../assets/images/login_background_image.jpg';
-import {Cart} from "../hooks/Context";
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useState, useRef } from "react";
+import { CartContext } from '../hooks/context/Context';
 import { useParams } from "react-router-dom";
 import LogoWhite from '../assets/images/logo_white.png';
 
@@ -26,21 +26,18 @@ import TopRelatedProducts from "../components/TopRelatedProducts";
 
 import ProductDB from "../Db/ProductDb";
 
-const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
+const ProductPage = ({ scrollPosition, handleScrollToTop, setIsCartAdded, isCartAdded }) => {
 
     const [isDescription, setIsDescription] = useState(true);
     const [isReview, setIsReview] = useState(false);
     const id = useParams();
 
-    const { productLength, setProductLength } = useContext(Cart);
+    const GlobalState = useContext(CartContext);
+    const { state, dispatch } = GlobalState;
 
-    const handleInputChange = () => {
-        setProductLength(inputRef.current.value)
-    }
-
+    console.log(GlobalState);
 
     const imageRef = useRef();
-    const inputRef = useRef();
 
 
     const handleDescription = () => {
@@ -53,16 +50,14 @@ const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
         setIsDescription(false);
     }
 
-    let MappedProduct;
-
     
-    MappedProduct = ProductDB.filter(product => {
+    const mappedProduct = ProductDB.filter(product => {
         return product.id == id.id;
     })
 
   return (
     <>
-        {MappedProduct.map (product => (<div className="w-full min-h-screen font-open_sans">
+        <div className="w-full min-h-screen font-open_sans">
             <div style={{backgroundImage: `url(${BackgroundImage})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundColor: '#061A1E', backgroundBlendMode:""}} className = "sm:h-[490px] h-[430px] w-[100%]">
                 <Navbar scrollPosition = {scrollPosition} color = "text-white" bg_color = '#071A1E' logo = {LogoWhite} />
                 <div className="text-center sm:flex sm:items-center sm:justify-between sm:mt-40 mt-16 px-16">
@@ -86,8 +81,8 @@ const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
                             <div className="w-[68%] pr-10">
                                 <div className="flex gap-6 flex-wrap">
                                     <div className="w-1/2">
-                                        <img src={product.productImage} className ="w-[400px]" />
-                                        <div ref = {imageRef} className="overflow-hidden flex w-[400px] gap-4 mt-5">
+                                        <img src={SmallPreviewOne} className ="w-[400px]" />
+                                        <div className="overflow-hidden flex w-[400px] gap-4 mt-5">
                                             <img src={SmallPreviewOne} className = "w-[21%]" alt="" />
                                             <img src={SmallPreviewTwo} className = "w-[21%]" alt="" />
                                             <img src={SmallPreviewThree} className = "w-[21%]" alt="" />
@@ -129,8 +124,8 @@ const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
                                             <h2 className="font-rajdhani font-bold text-text text-2xl
                                             ">Vegetables Juices</h2>
                                             <div className="mt-3 flex items-center gap-3 border-b pb-4">
-                                                <p className="text-secondary-200 text-open_sans text-4xl">{product.discountedPrice}</p>
-                                                <p className="text-secondary-200 text-4xl opacity-60 line-through">{product.actualPrice}</p>
+                                                <p className="text-secondary-200 text-open_sans text-4xl">{mappedProduct.discountedPrice}</p>
+                                                <p className="text-secondary-200 text-4xl opacity-60 line-through">{mappedProduct.actualPrice}</p>
                                             </div>
                                             <div className="flex mt-4 border-b pb-4">
                                                 <p>Categories: <span className="font-semibold ml-5 text-sm">Parts, Car, Seat, Cover</span></p>
@@ -138,7 +133,7 @@ const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
                                             <div className="flex mt-8">
                                                 <div className="flex">
                                                     <button className="border w-[35px] h-[55px] font-semibold text-2xl">-</button>
-                                                    <input ref ={inputRef} value ={productLength} type="text" className="border w-[48px] h-[55px] font-bold text-sm outline-none text-center" onChange={handleInputChange} />
+                                                    <input type="text" className="border w-[48px] h-[55px] font-bold text-sm outline-none text-center"  />
                                                     <button className="border w-[35px] h-[55px] font-semibold text-2xl">+</button>
                                                 </div>
                                                 <div className="flex items-center gap-2 explore_btn px-3 cursor-pointer ml-4">
@@ -297,8 +292,17 @@ const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
                         <div className="flex items-baseline font-rajdhani text-6xl">
                             <h1>Related Products <span className="text-secondary-200 -ml-3">.</span></h1>
                         </div>
-                        <div className="flex flex-wrap justify-center gap-7 mt-8 mb-16">
-                            <ProductCard ProductDB = {ProductDB} sliceNum = {4} />
+                        <div className="flex flex-wrap justify-center gap-8 mt-8 mb-16">
+                            {ProductDB.slice(0, 4).map((product) => (
+                            <ProductCard
+                                product={product}
+                                setIsCartAdded={setIsCartAdded}
+                                isCartAdded={isCartAdded}
+                                dispatch={dispatch}
+                                state = {state}
+                                key={product.id}
+                            />
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -309,7 +313,7 @@ const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
             </div>
             <div><Footer /></div>
             <ScrollToTop scrollPosition = {scrollPosition} handleScrollToTop = {handleScrollToTop} />
-        </div>))}
+        </div>
     </>
   )
 }
