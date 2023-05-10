@@ -220,8 +220,8 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
                             person
                         </span>
                         <ul className='absolute text-gray-800 font-semibold right-0 w-40 bg-white p-4 cursor-auto user-child'>
-                            <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'><Link to = "login">Sign in</Link></li>
-                            <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'><Link to = "register">Register</Link></li>
+                            <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'><Link to = "/login">Sign in</Link></li>
+                            <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'><Link to = "/register">Register</Link></li>
                             <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'>My Account</li>
                             <li className='cursor-pointer hover:text-secondary-200 transition duration-300 ease'>Wishlist</li>
                         </ul>
@@ -257,7 +257,7 @@ const Navbar = ({ scrollPosition, color, bg_color, logo }) => {
                     {state.length < 1 && (<p className = "text-center">You Cart is empty!!!</p>)}
                    { state.map(product => (<div className='flex gap-4 border_not_last_child py-5 pl-3'>
                         <div className='w-20 h-20 bg-gray-100 relative'>
-                            <img src = {cartItemImageOne} className = "w-full h-full" />
+                            <img src = {product.productImage} className = "w-full h-full" />
                             <div className='rounded-full bg-white flex items-center justify-center shadow cursor-pointer absolute -top-2 -left-2 w-5 h-5 pb-1' onClick={() => dispatch({type: 'REMOVE', payload: product})}>
                                 x
                             </div>

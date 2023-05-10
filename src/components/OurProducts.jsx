@@ -1,13 +1,7 @@
 import ProductCard from './ProductCard';
 import ProductDB from '../Db/ProductDb';
-import SuccessfullyAdded from './SuccessfullyAdded';
 
-import { useContext } from 'react';
-import { CartContext } from '../hooks/context/Context';
-
-const OurProducts = ({ setIsCartAdded, isCartAdded, cartAddedRef }) => {
-  const GlobalState = useContext(CartContext);
-  const { state, dispatch } = GlobalState;
+const OurProducts = () => {
 
   return (
     <div className = "min-h-screen font-open_sans">
@@ -26,18 +20,9 @@ const OurProducts = ({ setIsCartAdded, isCartAdded, cartAddedRef }) => {
           {ProductDB.map((product) => (
             <ProductCard
               product={product}
-              setIsCartAdded={setIsCartAdded}
-              isCartAdded={isCartAdded}
-              dispatch={dispatch}
-              state = {state}
               key={product.id}
             />
           ))}
-          <SuccessfullyAdded 
-            setIsCartAdded={setIsCartAdded}
-            isCartAdded={isCartAdded}
-            cartAddedRef={cartAddedRef}
-          />
         </div>
     </div>
   )

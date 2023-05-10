@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useReducer, useState, useRef, useEffect } from 'react';
 
 export const CartContext = createContext();
 
@@ -42,8 +42,29 @@ const Context = ({ children }) => {
     }
   }
 
+  const [isCartAdded, setIsCartAdded] = useState(false);
+  const cartAddedRef = useRef();
+
+  useEffect(() => {
+    const cartAddedOutsideClick = (e) => {
+      if (!cartAddedRef.current.contains(e.target)) {
+        setIsCartAdded(false);
+      }
+        else {
+        setIsCartAdded(true);
+      }
+    }
+
+    document.addEventListener('mousedown', cartAddedOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', cartAddedOutsideClick);
+    }
+      
+  }, []);
+
   const [state, dispatch] = useReducer(reducer, []);
-  const info = {state, dispatch}
+  const info = {state, dispatch, isCartAdded, setIsCartAdded, cartAddedRef}
   
   return (
     <CartContext.Provider value={info}>

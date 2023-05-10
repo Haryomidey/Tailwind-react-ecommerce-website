@@ -21,28 +21,7 @@ import { CartContext } from '../hooks/context/Context';
 const Home = ({ scrollPosition, handleScrollToTop }) => {
 
     const GlobalState = useContext(CartContext);
-    const { state, dispatch } = GlobalState;
-
-    const [isCartAdded, setIsCartAdded] = useState(false);
-    const cartAddedRef = useRef();
-
-    useEffect(() => {
-        const cartAddedOutsideClick = (e) => {
-            if (!cartAddedRef.current.contains(e.target)) {
-                setIsCartAdded(false);
-            }
-                else {
-            setIsCartAdded(true);
-            }
-        }
-
-        document.addEventListener('mousedown', cartAddedOutsideClick);
-
-        return () => {
-            document.removeEventListener('mousedown', cartAddedOutsideClick);
-        }
-        
-    }, []);
+    const { state, dispatch, isCartAdded, setIsCartAdded } = GlobalState;
 
   return (
     <div className='w-screen'>
@@ -85,7 +64,7 @@ const Home = ({ scrollPosition, handleScrollToTop }) => {
             <SecondSection />
         </div>
         <div>
-            <OurProducts setIsCartAdded = {setIsCartAdded} isCartAdded = {isCartAdded} cartAddedRef = {cartAddedRef} />
+            <OurProducts />
         </div>
         
         {/* Hot deal section starts */}
