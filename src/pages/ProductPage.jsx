@@ -26,7 +26,7 @@ import TopRelatedProducts from "../components/TopRelatedProducts";
 
 import ProductDB from "../Db/ProductDb";
 
-const ProductPage = ({ scrollPosition, handleScrollToTop, setIsCartAdded, isCartAdded }) => {
+const ProductPage = ({ scrollPosition, handleScrollToTop }) => {
 
     const [isDescription, setIsDescription] = useState(true);
     const [isReview, setIsReview] = useState(false);
@@ -35,7 +35,6 @@ const ProductPage = ({ scrollPosition, handleScrollToTop, setIsCartAdded, isCart
     const GlobalState = useContext(CartContext);
     const { state, dispatch } = GlobalState;
 
-    console.log(GlobalState);
 
     const imageRef = useRef();
 
@@ -50,14 +49,16 @@ const ProductPage = ({ scrollPosition, handleScrollToTop, setIsCartAdded, isCart
         setIsDescription(false);
     }
 
+    let MappedProduct;
+
     
-    const mappedProduct = ProductDB.filter(product => {
+    MappedProduct = ProductDB.filter(product => {
         return product.id == id.id;
     })
 
   return (
     <>
-        <div className="w-full min-h-screen font-open_sans">
+        {MappedProduct.map (product => (<div className="w-full min-h-screen font-open_sans">
             <div style={{backgroundImage: `url(${BackgroundImage})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundColor: '#061A1E', backgroundBlendMode:""}} className = "sm:h-[490px] h-[430px] w-[100%]">
                 <Navbar scrollPosition = {scrollPosition} color = "text-white" bg_color = '#071A1E' logo = {LogoWhite} />
                 <div className="text-center sm:flex sm:items-center sm:justify-between sm:mt-40 mt-16 px-16">
@@ -81,8 +82,8 @@ const ProductPage = ({ scrollPosition, handleScrollToTop, setIsCartAdded, isCart
                             <div className="w-[68%] pr-10">
                                 <div className="flex gap-6 flex-wrap">
                                     <div className="w-1/2">
-                                        <img src={SmallPreviewOne} className ="w-[400px]" />
-                                        <div className="overflow-hidden flex w-[400px] gap-4 mt-5">
+                                        <img src={product.productImage} className ="w-[400px]" />
+                                        <div ref = {imageRef} className="overflow-hidden flex w-[400px] gap-4 mt-5">
                                             <img src={SmallPreviewOne} className = "w-[21%]" alt="" />
                                             <img src={SmallPreviewTwo} className = "w-[21%]" alt="" />
                                             <img src={SmallPreviewThree} className = "w-[21%]" alt="" />
@@ -122,25 +123,32 @@ const ProductPage = ({ scrollPosition, handleScrollToTop, setIsCartAdded, isCart
                                         </div>
                                         <div className="text-left">
                                             <h2 className="font-rajdhani font-bold text-text text-2xl
-                                            ">Vegetables Juices</h2>
+                                            ">{product.productName}</h2>
                                             <div className="mt-3 flex items-center gap-3 border-b pb-4">
-                                                <p className="text-secondary-200 text-open_sans text-4xl">{mappedProduct.discountedPrice}</p>
-                                                <p className="text-secondary-200 text-4xl opacity-60 line-through">{mappedProduct.actualPrice}</p>
+                                                <p className="text-secondary-200 text-open_sans text-4xl">${product.discountedPrice}</p>
+                                                <p className="text-secondary-200 text-4xl opacity-60 line-through">${product.actualPrice}</p>
                                             </div>
                                             <div className="flex mt-4 border-b pb-4">
                                                 <p>Categories: <span className="font-semibold ml-5 text-sm">Parts, Car, Seat, Cover</span></p>
                                             </div>
                                             <div className="flex mt-8">
                                                 <div className="flex">
-                                                    <button className="border w-[35px] h-[55px] font-semibold text-2xl">-</button>
-                                                    <input type="text" className="border w-[48px] h-[55px] font-bold text-sm outline-none text-center"  />
-                                                    <button className="border w-[35px] h-[55px] font-semibold text-2xl">+</button>
+                                                    <button className="border w-[35px] h-[55px] font-semibold text-2xl"onClick = {() => {
+                                                        if (product.quantity > 1) {
+                                                            dispatch({ type: 'DECREASE', payload: product });
+                                                        }
+                                                        else {
+                                                            dispatch({type: 'REMOVE', payload: product})
+                                                        }
+                                                    }}>-</button>
+                                                    <input type="text" className="border w-[48px] h-[55px] font-bold text-sm outline-none text-center" value={product.quantity}/>
+                                                    <button className="border w-[35px] h-[55px] font-semibold text-2xl" onClick={() => dispatch({type: 'INCREASE', payload: product})}>+</button>
                                                 </div>
                                                 <div className="flex items-center gap-2 explore_btn px-3 cursor-pointer ml-4">
                                                     <span className="material-symbols-outlined text-2xl icon-filled">
                                                         shopping_cart
                                                     </span>
-                                                    <p className="font-rajdhani text-lg">ADD TO CART</p>
+                                                    <p className="font-rajdhani text-lg" onClick={() => dispatch({ type: 'ADD_TO_CART', payload: product })}>ADD TO CART</p>
                                                 </div>
                                                 
                                             </div>
@@ -296,10 +304,6 @@ const ProductPage = ({ scrollPosition, handleScrollToTop, setIsCartAdded, isCart
                             {ProductDB.slice(0, 4).map((product) => (
                             <ProductCard
                                 product={product}
-                                setIsCartAdded={setIsCartAdded}
-                                isCartAdded={isCartAdded}
-                                dispatch={dispatch}
-                                state = {state}
                                 key={product.id}
                             />
                             ))}
@@ -313,7 +317,7 @@ const ProductPage = ({ scrollPosition, handleScrollToTop, setIsCartAdded, isCart
             </div>
             <div><Footer /></div>
             <ScrollToTop scrollPosition = {scrollPosition} handleScrollToTop = {handleScrollToTop} />
-        </div>
+        </div>))}
     </>
   )
 }

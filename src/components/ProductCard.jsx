@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
+import SuccessfullyAdded from './SuccessfullyAdded';
 
-const ProductCard = ({ product, setIsCartAdded, isCartAdded, dispatch, state }) => {
+import { useContext, useState } from 'react';
+import { CartContext } from '../hooks/context/Context';
+
+const ProductCard = ({ product }) => {
+    const GlobalState = useContext(CartContext);
+    const { state, dispatch, setIsCartAdded, isCartAdded } = GlobalState;
+    const [tempProduct, setTemproduct] = useState([]);
+
+    const handleProduct = (prod) => {
+        setTemproduct(prod);
+    }
     product.quantity = 1;
   return (
     <>
@@ -50,6 +61,7 @@ const ProductCard = ({ product, setIsCartAdded, isCartAdded, dispatch, state }) 
                         (
                             <span className='material-symbols-outlined text-lg' onClick={() => {
                                 dispatch({ type: 'ADD_TO_CART', payload: product })
+                                handleProduct(product);
                                 setIsCartAdded(!isCartAdded)}}>
                                 shopping_cart
                             </span>
@@ -64,6 +76,8 @@ const ProductCard = ({ product, setIsCartAdded, isCartAdded, dispatch, state }) 
                 </div>
             </div>
         </div>}
+        
+        {tempProduct && <SuccessfullyAdded tempProduct={tempProduct} />}
     </>
   )
 }
